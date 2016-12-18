@@ -1,0 +1,274 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+
+\title{HW2}
+\author{beg2119}
+
+\newtheorem{question}{Question}
+
+\begin{document}
+
+\begin{center}
+    \textbf{HOMEWORK 2} \\
+    February 18$^{th}$ 2016 \\
+
+    beg2119
+\end{center}
+
+\bigskip
+
+% Section 1
+\begin{question}
+    Using direct proof, show that the sum of two consecutive perfect squares is odd.
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose that the sum of two consecutive perfect squares is odd
+        \item The definition of consecutive squares is $(x)^2 + (x+1)^2$
+        \item $2x^2 + 2x + 1$
+        \item $2(x^2 + x) + 1$
+        \item Set $k$ to the value of the parentheses,
+        \item $k=(x^2 + x)$
+        \item Thus, $2k + 1$
+        \item The definition of an odd number is $(\forall k \in \mathbb{Z})(2k + 1))$
+        \item $\therefore$ The sum of two consecutive perfect squares is odd
+    \end{enumerate}
+\end{proof}
+
+\bigskip
+
+% Section 2
+\begin{question}
+    Use proof by contrapositive to prove the following proposition:
+    \centerline{If $x^3$ is odd, then $x$ is odd.}
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose that $x^3$ is odd and $x$ is odd
+        \item the contrapositive must also be true: "if $x$ is not odd, then $x^3$ is not odd"
+        \item OR, "if $x$ is even, then $x^3$ is even"
+        \item The definition of an even number is $(\exists k \in \mathbb{Z}) x = 2k$
+        \item Cube both sides,
+        \item $x^3 = 8k^3$
+        \item Let $m = 4k^3$ thus $ x^3 = 2m$
+        \item $\therefore$ If $x$ is even, then $x^3$ is even
+    \end{enumerate}
+\end{proof}
+
+\newpage
+
+% Section 3
+\begin{question}
+    Prove that an integer is odd if and only if it is the sum of two consecutive integers.
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Formally, $(\forall x \in \mathbb{Z})(2 \nmid (x + (x+1)) \equiv 2x + 1$
+        \item The definition of an odd number is $2x + 1$
+        \item $\therefore$ If it is the sum of two consecutive integers then it is odd \\
+            \centerline{* \boldmath$p \Leftrightarrow q$ *}
+        \item Suppose that $x$ is odd,
+        \item $x = 2k + 1$
+        \item Can be expressed as $2k = k + k + 1$ which signifies consecutive integers such that $(\forall \ x \in \mathbb{Z})$
+        \item $\therefore$ If it is odd then it is it is the sum of two consecutive integers
+    \end{enumerate}
+\end{proof}
+
+\bigskip
+
+% Section 4
+\begin{question}
+    Prove or disprove the following proposition: any prime number greater than 2 can be expressed as 1 less than a power of 2. More formally, this means that for every prime number $p > 2$, there exists a natural number $n$ such that $p = 2^n - 1$.
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let $\mathbb{P}$ denote the set of all prime numbers
+        \item $(\forall \ p > 2 \in \mathbb{P})(\exists \ n \in \mathbb{N})\ p = 2^n - 1$
+        \item Suppose that the previous proposition is true
+        \item Let $p = 11$, which clearly satisfies the condition
+        \item $11 = 2^n - 1$; ($2^3 = 8$) \& ($2^4 = 16$)
+        \item There is no natural value of $n$ that satisfies this theorem when $p=11$
+        \item  $\therefore$ This proposition is disproven by counterexample
+    \end{enumerate}
+\end{proof}
+
+\bigskip
+
+% Section 5
+\begin{question}
+    Use direct proof for parts 1 and 2.
+\end{question}
+
+
+\begin{enumerate}
+    % 5.1
+    \item \textit{Let $x$ be an integer. Prove the following proposition:} \\
+      \centerline{\textit{If $x \geq 3$, then $x^2 > 2x+1$.}}
+      \begin{proof}
+          \begin{enumerate}
+              \item Suppose that $x \geq 3$
+              \item Multiply by $x$ on both sides
+              \item $x^2 \geq 3x \equiv x^2 \geq 2x + x$
+              \item From the original conditional clause we see $x^2 > 2x + 1$
+              \item While $x \geq 3$,
+              \item It must be the case that $2x + x > 2x + 1$
+              \item $\therefore x^2 > 2x+1$.
+          \end{enumerate}
+      \end{proof}
+    % 5.2
+    \item \textit{Let $a$ and $b$ be integers, and let $c$ be a negative integer. Prove the following proposition:} \\
+      \centerline{\textit{If $a > b$, then $a^2c^2-2abc^2+b^2c^2$ is positive.}}
+      \begin{proof}
+          \begin{enumerate}
+              \item $a^2c^2-2abc^2+b^2c^2 = (ac-bc)^2$
+              \item Take $a > b$
+              \item Multiply by c, (a negative integer)
+              \item $ac < bc$
+              \item $ac - bc < 0$
+              \item Multiply by negative (square)
+              \item $(ac - bc)^2 > 0$
+              \item $\therefore ((ac-bc)^2$), or ($a^2c^2-2abc^2+b^2c^2$), is positive
+          \end{enumerate}
+      \end{proof}
+
+\end{enumerate}
+
+
+% Section 6
+\begin{question}
+    Let $x$ and $y$ be real numbers. Using proof by cases, show that the following property holds: \\
+    \centerline{$|x + y| \leq |x| + |y|$}
+\end{question}
+\begin{proof}
+    \begin{itemize}
+        \item \underline{CASE 1} \\
+            Let both $x$ \& $y$ be positive \\
+            $|x + y| \leq |x| + |y|$ \\
+            $x + y \leq x + y$ \\
+            - TRUE
+        \item \underline{CASE 2}  \\
+            Let $x$ be positive and $y$ be negative
+            $|x - y| \leq |x| + |-y|$ \\
+            $ x - y \leq x + y$ \\
+            - TRUE
+        \item \underline{CASE 3}  \\
+            Let both $x$ \& $y$ be negative \\
+            $|-x - y| \leq |-x| + |-y|$ \\
+            $|-(x + y)| \leq x + y$ \\
+            $x + y \leq x + y$ \\
+            - TRUE
+        \item \underline{CASE 4} \\
+            Case 4: \\
+            Let $x$ be 0 and $y$ be positive \\
+            $|0 + y| \leq |0| + |y|$ \\
+            $|y| \leq y$ \\
+            $y \leq y$ \\
+            - TRUE
+    \end{itemize}
+\end{proof}
+
+\bigskip
+
+% Section 7
+\begin{question}
+    Using proof by contradiction, show that there are no integers $x$, $y$ that satisfy the equation $5x + 25y = 1723$.
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Suppose that $(x, y \in \mathbb{Z}) 5x + 25y = 1723$
+        \item $5(x + 5y) = 1723$
+        \item $x + 5y = 1723/5$
+        \item The result is not in the set of integers, and two integers cannot add to create something outside of that set
+        \item $\therefore$ There are no integers $x$ \& $y$ that satisfy the equation  $5x + 25y = 1723$
+    \end{enumerate}
+\end{proof}
+
+\bigskip
+
+% Section 8
+\begin{question}
+    Prove, using any method you'd like, that the sum of any three consecutive integers is divisible by 3.
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Assume that the sum of any three consecutive integers is divisible by 3
+        \item $(x,y,z \in \mathbb{Z}) \  x < y < z$
+        \item As $x, y, z$ are consecutive, $y = x + 1, z = x + 1 + 1$
+        \item Thus, $x + y + z \equiv x + (x + 1) + (x + 1 + 1)$
+        \item $3x + 3 = 3(x + 1) = 3y$
+        \item Because $(y \in \mathbb{Z})$, $3|3y$
+        \item $\therefore$ The sum of any three consecutive integers is divisible by 3
+    \end{enumerate}
+\end{proof}
+
+\bigskip
+
+% Section 9
+\begin{question}
+    Prove, using any method you'd like, that the difference between distinct, nonconsecutive perfect squares is composite. Recall that an integer $x$ is composite if and only if there exists some integer $y$ such that $1 < y < x$ and $y|x$. In other words, $x$ is composite if it has some positive factor other than $1$ and itself, i.e. $x$ is not prime.
+\end{question}
+
+\begin{proof}
+    \begin{enumerate}
+        \item Let $a$ \& $b$ be nonconsecutive perfect squares
+        \item $(\exists \  x,y \in \mathbb{Z}^+)$ such that $a = x^2$ \& $b=y^2$
+        \item $x$ \& $y$ are non consecutive, so $(x-y) \neq 1$
+        \item The difference between distinct, nonconsecutive perfect squares should be composite
+        \item $x^2 - y^2 = (x + y)(x - y)$
+        \item Neither factor $(x + y)$ nor factor $(x - y)$ equals 1 or $x^2 - y^2$
+        \item $\therefore$ The difference between distinct, nonconsecutive perfect squares is composite
+    \end{enumerate}
+\end{proof}
+
+\bigskip
+
+% Section 10
+\begin{question}
+    Convert the following statements into the formal notation of propositional logic (i.e. using variables and logical operators). Make sure to explain what each variable you introduce represents.
+
+    \begin{itemize}
+      \item Whenever we add a rational number and an irrational number, the sum is irrational. \\
+          \emph{Let $\mathbb{R}$ represent the set of all real numbers, $\mathbb{Q}$ represent the set of all rational numbers, \& $\mathbb{R}$\textbackslash $\mathbb{Q}$ represent the set of all irrational numbers} \\
+          $Q + \mathbb{R}$\textbackslash $\mathbb{Q} \Rightarrow \mathbb{R}$\textbackslash $\mathbb{Q}$
+
+      \item Two integers are odd only if their sum is even. \\
+          \emph{Let $\mathbb{Z}$ represent the set of all integers and $(x,y,z \in \mathbb{Z})$} \\
+          \emph{$2|x,y$ but $2 \nmid z$} \\
+          $x + y \Rightarrow z$
+
+      \item It is necessary that $a|(b+c)$ be true for $a|b$ and $a|c$ to be true. \\
+          $a|(b + c) \Rightarrow a|b \wedge a|c$
+
+      \item For $(ac)|(bd)$ to be true , it is sufficient that $a|b$ and $c|d$. \\
+          $a|b \wedge c|d \Rightarrow (ac)|(bd)$
+
+      \item For $x$ to be an odd number, it is necessary and sufficient that $x-1$ is even. \\
+          $(x \in \mathbb{Z})$ \\
+          $2|(x - 1) \Rightarrow x$
+
+      \item An integer is even if and only if its square is even. \\
+          $(x \in \mathbb{Z})$ \\
+          $ 2|x \Leftrightarrow 2|x^2$
+
+    \end{itemize}
+\end{question}
+
+% BONUS
+\centerline{\bf BONUS}
+\begin{question}
+    Let x and y be two numbers. State whether the following proposition is true or not: \\
+        \centerline{If $x > y$ and $x < y$, then $x = y$.}
+\end{question}
+
+True. Contradictions imply everything. (on the contrary tautologies are implied by everything)
+
+\end{document}
