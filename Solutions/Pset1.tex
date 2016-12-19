@@ -1,0 +1,254 @@
+\documentclass[11pt,oneside]{article}
+
+\usepackage{amsfonts,amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+
+%%%%
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\renewcommand{\headrulewidth}{0pt}
+%\fancyhf{}
+
+%\setlength{\textheight}{9.6in}
+%\setlength{\textwidth}{7.0in}
+%\setlength{\topmargin}{-0.8in}
+%\setlength{\oddsidemargin}{-0.25in}
+%\setlength{\evensidemargin}{0.75in}
+%\setlength{\parskip}{0.15in}
+%\setlength{\parindent}{0in}
+%%%
+
+\title{MATH 135: Extra Practice Set 1}
+\author{AnnieZhou08}
+
+\newtheorem{question}{Question}
+
+\begin{document}
+
+\begin{center}
+    \textbf{MATH 135: Extra Practice Set 1} \\
+    December 18$^{th}$ 2016 \\
+
+    AnnieZhou08
+\end{center}
+
+\bigskip
+
+% Section 1
+\begin{question}
+    Determine whether A $\Rightarrow$ B is logically equivalent to ($\neg$ A) $\lor$ B. 
+\end{question}
+
+\begin{proof}
+    Draw a truth table:
+	    \begin{center}
+	    	\begin{tabular}{c|c|c|c|c}
+	    		\hline
+	    		A & B & A $\Rightarrow$ B & $\neg$ A & ($\neg$ A) $\lor$ B \\
+	    		\hline
+	    		T & T & $\mathbf{T}$ & F & $\mathbf{T}$\\
+	    		T & F & $\mathbf{F}$ & F & $\mathbf{F}$\\
+	    		F & T & $\mathbf{T}$ & T & $\mathbf{T}$\\
+	    		F & F & $\mathbf{T}$ & T & $\mathbf{T}$\\
+	    	\end{tabular}
+	    \end{center}
+	$\mathbf{Note:}$ The columns in bold are equivalent.
+        
+    
+\end{proof}
+
+\bigskip
+
+% Section 2
+\begin{question}
+    Let $n$, $a$, $b$ be positive integers. Negate the following implication without using the word "not" or the $\neg$ symbol (but symbols such as $\neq$, $\nmid$, etc. are fine). 
+    \begin{center}
+    	Implication: If $a^3$ $\mid$ $b^3$, then a $\mid$ b.\\
+    \end{center}
+\end{question}
+
+\begin{proof}
+	The negation of A $\Rightarrow$ B is A $\land$ ($\neg$). Thus the negation of this statement is: $a^3$ $\mid$ $b^3$ $\land$ $a$ $\mid$ $b$.
+\end{proof}
+
+\newpage
+
+% Section 3
+\begin{question}
+    Assume that it has been established that the following implication is true:\\
+    \\
+    \centerline{If I don't see my advisor today, then I will see her tomorrow.}\
+    \\
+    For each of the statements below, determine if it is true or false, or explain why the truth value of the statement cannot be determined.
+   \begin{enumerate}
+   	\item[(a)] I don't meet my advisor both today and tomorrow.
+   	\item[(b)] I meet my advisor both today and tomorrow.
+   	\item[(c)] I meet my advisor either today or tomorrow (but not on both days).
+   \end{enumerate}
+\end{question}
+
+\begin{proof}
+	Note: Hypothesis of the true statement is: I don't see my advisor today and conclusion of the true statement is: I don't see my advisor tomorrow. \\
+    \begin{enumerate}
+        \item[(a)] \emph{False}. The hypothesis of this implication is "I don't meet my advisor today", which is a true hypothesis. However the conclusion is "I don't meet my advisor tomorrow", which is a false conclusion. True hypothesis and false conclusion implies it is false.
+        \item[(b)] \emph{Inconclusive}. The hypothesis of this implication is "I meet my advisor both today and tomorrow", which is a false hypothesis. In order for this implication to be true, the conclusion can be true or false. Therefore we do not know if the I will meet my advisor tomorrow or not. Another way to think about this is: if I don't meet my advisor today, I will definitely see her tomorrow. However if I meet my advisor today, I can choose to see her or not see her tomorrow.
+        \item [(c)] \emph{Inconclusive}. There are two cases: I meet my advisor today and I don't meet her tomorrow; or I don't see my advisor today and meet her tomorrow. The first case - I meet my advisor today and I don't meet her tomorrow is inconclusive just like (b).
+    \end{enumerate}
+\end{proof}
+
+\newpage
+
+% Section 4
+\begin{question}
+    Four friends: Alex, Ben, Gina and Dana are having a discussion about going to the movies. Ben says that he will go to the movies if Alex goes as well. Gina says that if Ben goes to the movies, then she will join. Dana says that she will go to the movies if Gina does. That afternoon, exactly two of the four friends watch a movie at the theatre. Deduce which two people went to the movies.
+\end{question}
+
+\begin{proof}
+    Dana and Gina went to the movies. \\
+    If Gina does, then Dana has to go to the movies. However if Ben doesn't go to the movies, Gina can choose to go or not to go, since the hypothesis itself is false. Therefore Alex and Ben did not go to the movies. Dana and Gina went. 
+\end{proof}
+
+\bigskip
+
+% Section 5
+\begin{question}
+    Prove the following statement using a chain of logical equivalences as in Chapter 3 of the notes. \\
+    \\
+    \centerline{($A$ $\land$ $C$) $\lor$ ($B$ $\land$ $C$) $\equiv$ $\neg$ (($A$ $\lor$ $B$) $\Rightarrow$ $\neg$ $C$)}\
+\end{question}
+
+\begin{proof}
+	Draw a truth table
+	\begin{center}
+		\begin{tabular}{c|c|c|c|c|c}
+			A & B & C & A $\land$ C & B $\land$ C & ($A$ $\land$ $C$) $\lor$ ($B$ $\land$ $C$)\\
+			\hline
+			T & T & T & T & T & T\\
+			T & T & F & F & F & F\\
+			T & F & T & T & F & T\\
+			T & F & F & F & F & F\\
+			F & T & T & F & T & T\\
+			F & T & F & F & F & F\\
+			F & F & T & F & F & F\\
+			F & F & F & F & F & F\\
+		\end{tabular}
+	\end{center}
+	\begin{center}
+		\begin{tabular}{c|c|c|c}
+			$A$ $\lor$ $B$ & $\neg$ $C$ & ($A$ $\lor$ $B$) $\Rightarrow$ $\neg$ $C$) & $\neg$ (($A$ $\lor$ $B$) $\Rightarrow$ $\neg$ $C$)\\
+			\hline
+			T & F & F & T\\
+			T & T & T & F\\
+			T & F & F & T\\
+			T & T & T & F\\
+			T & F & F & T\\
+			T & T & T & F\\
+			F & F & T & T\\
+			F & T & T & F\\
+		\end{tabular}
+	\end{center}
+	$\mathbf{Note:}$ that the last columns of the two tables are equivalent.
+\end{proof}
+
+% Section 6
+\begin{question}
+    Suppose $r$ is some (unknown) real number, where $r$ $\neq$ $-1$ and $r$ $\neq$ $-2$. Show that \\
+    
+    \centerline{$\frac{2^{r+1}}{r+2}$ $-$ $\frac{2^r}{r+1}$ = $\frac{r(2^r)}{(r+1)(r+2)}$}\
+\end{question}
+
+\begin{proof}
+    Factoring out $2^r$ and take the common denominator we will have: \\
+    
+    \begin{align}
+	    \frac{2^{r+1}}{r+2} - \frac{2^r}{r+1}& =
+	    2^r(\frac{2}{r+2} - \frac{1}{r+1})\\
+	    & = 2^r(\frac{2(r+1)-(r+2)}{(r+1)(r+2)})\\
+	    & = 2^r(\frac{r}{(r+1)(r+2)})
+    \end{align}
+    
+\end{proof}
+
+\bigskip
+
+% Section 7
+\begin{question}
+    Let $a$, $b$, $c$, and $d$ be positive integers. Suppose $\frac{a}{b} < \frac{c}{d}$. Prove that $\frac{a}{b} < \frac{a+c}{b+d} < \frac{c}{d}$.\\
+\end{question}
+
+\begin{proof}
+   $\mathbf{DO LATER}$
+\end{proof}
+
+\newpage
+
+% Section 8
+\begin{question}
+    Prove that $x^2 + 9 \geq 6x$ for all real numbers x.
+\end{question}
+
+\begin{proof}
+    Moving $6x$ onto the left side we will have: \\
+    
+    \centerline{$x^2 + 9 - 6x \geq 0 \iff
+    	(x-3)^2 \geq 0$}\
+
+    We have completed the proof by axiom that the square of any real number is always non negative.   
+    
+\end{proof}
+
+\bigskip
+
+% Section 9
+\begin{question}
+    Let $n$ be an integer. Prove that if $1 - n^2 > 0$, then $3n - 2$ is an even integer.
+\end{question}
+
+\begin{proof}
+    $1 - n^2 > 0 \Rightarrow n^2 < 1$, and the only integer that satisfies this condition is when $n = 0$.\\
+    $\therefore n = 0$.\\
+    Then $3n - 2 = 0 - 2 = -2$, which is an even integer.
+\end{proof}
+
+\bigskip
+
+% Section 10
+\begin{question}
+    Let $a$ and $b$ be two integers. Prove each of the following statements about $a$ and $b$. \\
+    \begin{enumerate}
+    	\item[(a)] If $ab = 4$ then $(a-b)^3 - 9(a-b) = 0$.
+    	\item[(b)] If $a$ and $b$ are positive, then $a^2(b+1) + b^2(a+1) \geq 4ab$.  
+    \end{enumerate}
+\end{question}
+
+\begin{proof}
+	$\mathbf{DO LATER!}$
+\end{proof}
+D
+%Section 11
+\begin{question}
+	Let $a$, $b$, $c$ be integers. Prove that if $a | b$ then $ac | bc$.
+\end{question}
+\begin{proof}
+	If $a | b$, then $\exists k \in \int$ such that $ak = b$.
+	Now since $ak = b$, then $bc = (ak)c = (ac)k$. Then by definition of divisibility, sine $k$ is an integer, $ac|bc$.
+\end{proof}
+
+%Section 12
+\begin{question}
+	Let $a, b, c$ and $d$ be integers. Prove that if $a|b$ and $b|c$ and $c|d$, then $a|d$.
+\end{question}
+\begin{proof}
+	By transitivity $a|d$.
+\end{proof}
+
+%Section 13
+\begin{question}
+	Prove that the product of any four consecutive integers is one less than a perfect square.
+\end{question}
+\begin{proof}
+	$\mathbf{DO LATER}$
+\end{proof}
+
+\end{document}
