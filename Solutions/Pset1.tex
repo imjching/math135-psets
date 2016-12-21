@@ -178,7 +178,18 @@
 \end{question}
 
 \begin{proof}
-   $\mathbf{DO LATER}$
+   $\frac{a}{b}<\frac{a+c}{b+d}<\frac{c}{d} \iff \frac{a+c}{b+d} - \frac{a}{b} > 0$ and $\frac{c}{d} - \frac{a+c}{b+d} > 0$. Therefore we can break the proof into the two sides. \\
+   \\
+   Claim: $\frac{a+c}{b+d} - \frac{a}{b} > 0$ \\
+   Proof: \\
+    $\frac{a+c}{b+d} - \frac{a}{b} > 0$ $\iff$ $\frac{b(a+c)-a(b+d)}{(b+d)b} > 0$ $\iff$ $\frac{bc-ad}{b(b+d)} > 0$.
+   Note that the denominator will always be positive, since $a$, $b$, $c$ and $d$ are all positive integers. Also we know that $\frac{a}{b} > \frac{c}{d}$, therefore: \\
+   \centerline{$ad < bc$}.
+   \centerline{$\Rightarrow bc - ad > 0$}.
+   \\
+   Claim: $\frac{c}{d} - \frac{a+c}{b+d} > 0$ \\
+   Proof: Similar to the proof above.
+   
 \end{proof}
 
 \newpage
@@ -223,7 +234,19 @@
 \end{question}
 
 \begin{proof}
-	$\mathbf{DO LATER!}$
+	 (a) $(a-b)^3 - 9(a-b) = (a-b)((a-b)^2-9)$ after factoring, which is equivalent to $(a-b)(a^2 - 2ab - b^2 - 9)$.\\
+	 Since $ab = 4$, this means \\
+	 \centerline{$(a-b)(a^2 - 2ab - b^2 - 9) = (a-b)(a^2 - b^2 - 17) = 0$.} \\
+	 Now, since $ab=4$ and $a$, $b$, are both integers, then\\
+	 \centerline{$a=\pm2$, $b=\pm2$}\\
+	 \centerline{$a=\pm1$, $b=\pm4$}\\
+	 \centerline{$a=\pm4$, $b=\pm1$}\\
+	 Note that if $a=\pm2$, $b=\pm2$, then $(a-b)=0$ and if $a=\pm1$, $b=\pm4$ or $a=\pm4$, $b=\pm1$, then $(a^2 - b^2 - 17) = 0$.\\
+	 $\therefore$ if $ab = 4$, then $(a-b)^3 - 9(a-b) = 0$.
+	 \\
+\end{proof}
+\begin{proof}
+	(b) 
 \end{proof}
 
 %Section 11
@@ -252,3 +275,4 @@
 \end{proof}
 
 \end{document}
+
