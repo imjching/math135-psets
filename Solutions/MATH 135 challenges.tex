@@ -13,16 +13,25 @@
 
 \section {Extra practice 1.}
 \begin{enumerate}
-\item Let $n=3k$. If $k$ is odd then $k=2x+1$ for some $x\in\mathbb{Z}$. Now $2|n=3(2x+1)=6x+3=2(3x+1)+1$, so $2|1$, contradiction. Hence $k$ is even and write $k=2y$. Now $n=3k=3(2y)=6y=6\times y$ so $6|6y=n$.
+\item Let $n$ be an integer. Prove that if $2|n$ and $3|n$, then $6|n$.
 
-\item $a^2+b^2+c^2-ab-bc-ca=\frac12((a-b)^2+(b-c)^2+(c-a)^2)\ge 0$, so $ab+bc+ca\le a^2+b^2+c^2=1$. On the other hand $0\le (a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca=1+2ab+2bc+2ca$, so $2(ab+bc+ca)\ge -1$, or $ab+bc+ca\ge\frac{-1}{2}$.
+\textbf {Solution.} Let $n=3k$. If $k$ is odd then $k=2x+1$ for some $x\in\mathbb{Z}$. Now $2|n=3(2x+1)=6x+3=2(3x+1)+1$, so $2|1$, contradiction. Hence $k$ is even and write $k=2y$. Now $n=3k=3(2y)=6y=6\times y$ so $6|6y=n$.
+
+\item Given that $a^2+b^2+c^2=1$ for real numbers $a,b$ and $c$. Prove that $-1/2\le ab+bc+ca\le 1$.
+
+\textbf {Solution.} For the right inequality, $a^2+b^2+c^2-ab-bc-ca=\frac12((a-b)^2+(b-c)^2+(c-a)^2)\ge 0$, so $ab+bc+ca\le a^2+b^2+c^2=1$. For the left inequality, $0\le (a+b+c)^2=a^2+b^2+c^2+2ab+2bc+2ca=1+2ab+2bc+2ca$, so $2(ab+bc+ca)\ge -1$, or $ab+bc+ca\ge\frac{-1}{2}$.
 \end{enumerate}
 
 \section {Extra practice 2.}
 \begin{enumerate}
-\item We show that $p=3$. Indeed, if $3|p$ then we must have $p=3$, and if $3\nmid p$ we have $p\equiv \pm 1\pmod{3}$ so $p^2+2\equiv (\pm 1)^2+2=1+2=3\equiv 0\pmod {3}$. This means $3=p^2+2$, or $p=\pm 1$, contradiction. Hence $p=3$, and $p^3+2=3^3+2=29$ is a prime.
+\item Show that if $p$ and $p^2+2$ are prime, then $p^3+2$ is also prime.
 
-\item In first order number theory (don't worry if you haven't heard of it; it's in MATH 145 syllabus) we could write $\exists L(\forall\epsilon [0<\epsilon \to(\exists\delta [0<\delta\land (\forall x [0<x+\delta \land x<\delta\to 3x+\epsilon<L\land 3x<L+\epsilon ])])])$. Notice that this is unnecessarily complicated and hardly readable but in first order number theory only constants, variables, parenthesis, $+, \times, \neg, \exists, \forall, \land, \lor, \to, \leftrightarrow, <, =$ are allowed. We could have written as $\exists L(\forall \epsilon>0(\exists\delta>0 (|x|<\delta \to |3x-L|<\epsilon)))$.
+\textbf {Solution.} We show that $p=3$. Indeed, if $3|p$ then we must have $p=3$, and if $3\nmid p$ we have $p\equiv \pm 1\pmod{3}$ so $p^2+2\equiv (\pm 1)^2+2=1+2=3\equiv 0\pmod {3}$. This means $3=p^2+2$, or $p=\pm 1$, contradiction. Hence $p=3$, and $p^3+2=3^3+2=29$ is a prime.
+
+\item Express the following statement in symbolic form and prove that it is true:\\
+There exists a real number $L$ such that for every positive real number $\epsilon$, there exists a $\delta$ such that for all real numbers $x$, if $|x|<\delta$, then $|3x-L|<\epsilon$.
+
+\textbf {Solution.} In first order number theory (don't worry if you haven't heard of it; it's in MATH 145 syllabus) we could write $\exists L(\forall\epsilon [0<\epsilon \to(\exists\delta [0<\delta\land (\forall x [0<x+\delta \land x<\delta\to 3x+\epsilon<L\land 3x<L+\epsilon ])])])$. Notice that this is unnecessarily complicated and hardly readable but in first order number theory only constants, variables, parenthesis, $+, \times, \neg, \exists, \forall, \land, \lor, \to, \leftrightarrow, <, =$ are allowed. We could have written as $\exists L(\forall \epsilon>0(\exists\delta>0 (|x|<\delta \to |3x-L|<\epsilon)))$.
 
 We show that $L=0$ works (in fact, $L=0$ is the only number you should think of). For each $\epsilon$, choose $\delta=\frac{\epsilon}{3}$. Then $|x|<\delta\to |x|<\frac{\epsilon}{3}\to 3|x|<\epsilon \to |3x|<\epsilon$.
 
@@ -97,13 +106,15 @@ Now for all integers $k$ with $1\le k\le 20$ we have $\gcd (n,n+k)=k$ so $k|n$ a
 
 \textbf {Comment.} Notice that the problem is true if we replace 21 with any number that is not a prime power. A slightly harder version of this problem is Problem 3 in International Mathematics Tournament of Towns, Senior O-Level:\\ \emph{http://www.math.toronto.edu/oz/turgor/archives/TT2013F\_SOsolutions.pdf}. Have fun trying!
 
-\item First, we show that $2^x-1|2^{xy}-1$, $\forall x, y\ge 0$. Indeed, $2^x\equiv 1\pmod {2^x-1}$ so $2^{xy}=(2^x)^{y}\equiv 1^y\equiv 1\pmod {2^x-1}$. Therefore, since $\gcd (a,b)$ divides both $a$ and $b$, we have $2^{\gcd(a,b)}-1$ divides both $2^a-1$ and $2^b-1$, and therefore $2^{\gcd (a,b)}-1\le \gcd (2^a-1, 2^b-1)$.
+\item\textbf {Solution 1.} First, we show that $2^x-1|2^{xy}-1$, $\forall x, y\ge 0$. Indeed, $2^x\equiv 1\pmod {2^x-1}$ so $2^{xy}=(2^x)^{y}\equiv 1^y\equiv 1\pmod {2^x-1}$. Therefore, since $\gcd (a,b)$ divides both $a$ and $b$, we have $2^{\gcd(a,b)}-1$ divides both $2^a-1$ and $2^b-1$, and therefore $2^{\gcd (a,b)}-1\le \gcd (2^a-1, 2^b-1)$.
 
 Now first suppose that $a,b>0$. To prove the other direction we need a corollary: for all odd positive integers $x$, if $x|2^a-1$ and $x|2^b-1$ then $x|2^{\gcd (a,b)}-1$. Let $d$ be the minimum positive integer such that $x|2^d-1$ (this $d$ exists because $x|2^{\phi (x)}-1$ by Euler-Fermat theorem). We show that for all $k$, $x|2^k-1\Leftrightarrow d|k$. By Euclidean's remainder theorem we can write $k=bd+r$ with $0\le r<d$. Therefore $2^k=2^{bd+r} = 2^{bd}\cdot 2^r = (2^d)^b\cdot 2^r \equiv 1^b\cdot 2^r=2^r\pmod {x}$. If $r>0$, then by the minimality of $d$ we have $2^r\not\equiv 1\pmod {x}$ but if $r=0$, $2^r=1$. Thus $x|2^d-1\Leftrightarrow x|2^r-1\Leftrightarrow r=0\Leftrightarrow d|k$.
 
 Now let's proceed with our claim, and here we let $x=\gcd (2^a-1, 2^b-1)$ (since 2 does not divide either of $2^a-1, 2^b-1$ for $a,b>0$, $\gcd (2^a-1, 2^b-1)$ is also odd, so the claim above applies to this $x$.) If we define $d$ as of above, the smallest positive integer with $x|2^d-1$, then from $x|2^a-1$ $x|2^b-1$ we have $d|a$ and $d|b$. This would imply $d|pa+qb$ for all $p,q\in\mathbb{Z}$, and since there exists such $p$ and $q$ with $pa+qb=\gcd (a,b)$ by Euclidean algorithm, $d|\gcd (a,b)$. But this implies $x=\gcd (2^a-1, 2^b-1)|2^d-1|2^{\gcd (a,b)}-1$, so $\gcd (2^a-1, 2^b-1)\le 2^{\gcd (a,b)}-1$. Summing the two inequalities we have $2^{\gcd (a,b)}-1= \gcd (2^a-1, 2^b-1)$ for $a,b$ positive.
 
 In the case $a=0$ then $2^{\gcd (a,b)}-1=2^{\gcd (0,b)}-1=2^b-1=\gcd (0, 2^b-1)=\gcd (2^0-1, 2^b-1)=\gcd (2^a-1, 2^b-1)$. The case $b=0$ is completely analogous.
+
+\textbf {Solution 2.} (Professor Stephen New) We present a different solution on $\gcd (2^a-1, 2^b-1)\le 2^{\gcd (a,b)}-1$. Indeed, by Euclidean algorithm we can choose $k$ and $l$ such that $ax+by=\gcd (a,b)$. Since $\gcd (2^a-1, 2^b-1)|2^a-1$ and $\gcd (2^a-1, 2^b-1)|2^b-1$ we have $2^a\equiv 2^b\equiv 1\pmod {\gcd (2^a-1, 2^b-1)}$. Therefore $2^{\gcd (a,b)}=2^{ax+by}=(2^a)^x\cdot (2^b)^y=1^x\cdot 1^y\equiv\pmod {\gcd (2^a-1, 2^b-1)}$, so $\gcd (2^a-1, 2^b-1)|2^{\gcd (a,b)}-1$ and $\gcd (2^a-1, 2^b-1)\le 2^{\gcd (a,b)}-1$.
 
 \end{enumerate}
 
@@ -137,9 +148,15 @@ Hence this number is perfect.
 
 \emph {Scenario 3.} Suppose that both scenarios 1 and 2 didn't happen, then there exists $N$ such that for all $k\ge N$, $b_k=3$. Let $m=a_N$, which ends with digit 3. If $3|m$ then $3|a_k$ for all $k\ge N$, hence $a_k$ composite except for at most once $a_k$ with $a_k=3$. Now let's assume $3\nmid m$. We can see that $\gcd (10, m)=1$ since $m$, which ends with digit 3, is divisible by neither 2 nor 5. Now, by Euler-Fermat theorem, for all positive integers $j$, $10^{j\phi(m)}=(10^{\phi (m)})^j\equiv 1^j\equiv 1\pmod {m}$, and we know the number $\underbrace{33\cdots 3}_{j\phi(m)\text{ times}}=3(\frac{10^{j\phi(m)}-1}{9})=\frac{10^{j\phi(m)}-1}{3}$  is divisible by $m$ since $m|10^{j\phi(m)}-1$ and $\gcd (m,3)=1$. Now for all $j\ge 1$, $a_{N+j\phi(m)}=a_N(10^{j\phi(m)})+\frac{10^{j\phi(m)}-1}{3}$ = $m(10^{j\phi(m)})+\frac{10^{j\phi(m)}-1}{3}$ is divisible by $m$ and greater than $m$ (since $\phi (m)\ge 1$), hence is composite. Q.E.D.
 
-\item We need this identity: For each $k\ge 1$, there exists an odd positive integer $c$ with $3^{2^k}-1=c\cdot 2^{k+2}$ (in other words the highest power of 2 that divides $3^{2^k}-1$ is $k+2$). Let's proceed by inducting on $k$. If $k=1$ then $3^{2^1}-1=8=2^3=1\cdot 2^{1+2}$. Now suppose that for some $p\ge 1$, $3^{2^p}-1=c\cdot 2^{p+2}$ for some odd positive integer $c$. Now $3^{2^{p+1}}-1=(3^{2^p}-1)(3^{2^p}+1)=c\cdot 2^{p+2}\cdot(c\cdot 2^{p+2}+2) = c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}$. Now $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ = $c^2\cdot 2^{p+1}+c.$ Since $p\ge 1$, $c^2\cdot 2^{p+1}$ is even but $c$ is odd, so $c^2\cdot 2^{p+1}+c$ = $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ is an odd integer, completing the claim.
+\item\textbf {Solution 1.} We need this identity: For each $k\ge 1$, there exists an odd positive integer $c$ with $3^{2^k}-1=c\cdot 2^{k+2}$ (in other words the highest power of 2 that divides $3^{2^k}-1$ is $k+2$). Let's proceed by inducting on $k$. If $k=1$ then $3^{2^1}-1=8=2^3=1\cdot 2^{1+2}$. Now suppose that for some $p\ge 1$, $3^{2^p}-1=c\cdot 2^{p+2}$ for some odd positive integer $c$. Now $3^{2^{p+1}}-1=(3^{2^p}-1)(3^{2^p}+1)=c\cdot 2^{p+2}\cdot(c\cdot 2^{p+2}+2) = c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}$. Now $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ = $c^2\cdot 2^{p+1}+c.$ Since $p\ge 1$, $c^2\cdot 2^{p+1}$ is even but $c$ is odd, so $c^2\cdot 2^{p+1}+c$ = $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ is an odd integer, completing the claim.
 
 Now for the main problem we proceed by inducting on $k$. For $k=1,2,3$ we can choose $n=1$, so that $3+5=8$ is divisible by 2,4, and 8. Now suppose that for some $k\ge 3$, we can find $n_k$ such that $2^k|3^{n_k}+5$. We want to prove that we can find $n_{k+1}$ such that $2^{k+1}|3^{n_{k+1}}+5.$ If $2^{k+1}|3^{n_k}+5$ then we can choose $n_{k+1}=n_k$. Otherwise, we can write $3^{n_k}+5=c\cdot 2^k$ for some odd $c$. Now choose $n_{k+1}=n_k+2^{k-2}$. Recall that by the lemma above we can write $3^{2^{k-2}}-1$ as $d\cdot 2^k$ for some odd $d$. Therefore, $3^{n_{k+1}}+5=3^{n_k+2^{k-2}}+(3^{n_k})(3^{2^{k-2}})+5=(c\cdot 2^k-5)(d\cdot 2^k+1)+5=cd\cdot 2^{2k}-5d\cdot 2^k+c\cdot 2^k -5 +5 = cd\cdot 2^{2k}+(c-5d)\cdot 2^k = (2^{k+1})(cd\cdot 2^{k-1}+\frac{c-5d}{2})$. Now since $k\ge 3$, $2^{k-1}$ is an integer and since $c$ and $5d$ are both odd, $c-5d$ is even and therefore $\frac{c-5d}{2}$ is an integer. Therefore $cd\cdot 2^{k-1}+\frac{c-5d}{2}$ is an integer and $2^{k+1}|3^{n_{k+1}}+5$, completing the induction proof.
+
+\textbf {Solution 2.} If $5\times 3^j\equiv -1\pmod {2^k}$ some some $j$ and for some $k$, then $5\equiv 5\times 1^j\equiv 5\times (3^{\phi (2^k)})^j=5\times 3^{j\phi (2^k)}$
+$=(5\times 3^j) \times 3^{j\phi (2^k)-j}$
+$\equiv -1\times  3^{j\phi (2^k)-j}$
+$=-3^{j\phi (2^k)-j}\pmod {2^k}$.
+Therefore $5+3^{j\phi (2^k)-j}\equiv 0\pmod {2^k}$. It then suffices to find one $j$ with $5\times 3^j\equiv -1\pmod {2^k}$, or equivalently $2^k|5\times 3^j+1$. Now for $k\le 4$, $j=1$ works. Again we can proceed by induction on $k$ given the base case for $k=1,2,3,4$. Suppose that $5\times 3^j\equiv -1\pmod {2^k}$, and we want to find $j_1$ with $5\times 3^{j_1}\equiv -1\pmod {2^{k+1}}.$ If $5\times 3^j\equiv -1\pmod {2^{k+1}}$ then we take $j=j_1$. Otherwise, we have $5\times 3^j\equiv 2^k-1\pmod {2^{k+1}}$ (convince yourself that this is true!). As of solution 1 we have $3^{2^{k-2}}-1=c\cdot 2^k$ for some odd $c$ so we can translate this into $3^{2^{k-2}}\equiv 2^k+1\pmod{2^{k+1}}$. Therefore $5\times 3^j\times 3^{2^{k-2}}\equiv (2^k-1)(2^k+1)\equiv 2^{2k}-1\equiv -1\pmod {2^{k+1}}$ and we can take $j_1=j+2^{k-2}$.
 \end{enumerate}
 
 \section {Extra practice 9.}
@@ -158,7 +175,7 @@ so $|z+w|=|(a+c)+(b+d)i|=\sqrt{(a+c)^2+(b+d)^2}\le \sqrt{a^2+b^2}+\sqrt{c^2+d^2}
 
 (b) The right inequality is almost similar as above. For the left inequality, by (a) we have $|z|=|w+(z-w)|\le |w|+|z-w|$ so $|z|-|w|\le |z-w|$. Also $|w|=|z+(w-z)|\le |z|+|w-z|=|z|+|z-w|$ (as $|a|=|-a|$ for all $a\in\mathbb{C})$ so $|w|-|z|\le |z-w|$. Comparing both inequalities yield $||z|-|w||\le |z-w|$.
 
-\item On the Cartesian plane, denote $A, B, C$ as the coordinate corresponding to $a,b,c$ on complex plane. Then in vector form $b-a=\vv{AB}$, $a-c=\vv{CA}$ and $c-b=\vv{BC}$. It suffices to prove that $A, B, C$ are the vertices of an equilateral triangle. Observe $a-c$ and $c-b$ cannot be zero (otherwise the quotient may not be defined) so $\frac{b-a}{c-b}=\frac{a-c}{c-b}\neq 0$, and $b-a$ cannot be zero too. Thus no two point coincide.
+\item\textbf{Solution 1.} On the Cartesian plane, denote $A, B, C$ as the coordinate corresponding to $a,b,c$ on complex plane. Then in vector form $b-a=\vv{AB}$, $a-c=\vv{CA}$ and $c-b=\vv{BC}$. It suffices to prove that $A, B, C$ are the vertices of an equilateral triangle. Observe $a-c$ and $c-b$ cannot be zero (otherwise the quotient may not be defined) so $\frac{b-a}{c-b}=\frac{a-c}{c-b}\neq 0$, and $b-a$ cannot be zero too. Thus no two point coincide.
 
 Let's consider the case where $A,B,C$ are not collinear. Now we show that $\angle BAC=\angle ACB$. In subsequent solution we will talk about $\arg$ of vector in modulo $2\pi$. Now, $\arg (b-a)-\arg (a-c)$ = $\arg (\frac{b-a}{a-c})$ = $\arg (\frac{a-c}{c-b})$ = $\arg (a-c)-\arg (c-b)$. Also notice that $\arg (b-a)-\arg (a-c)$ is the counterclockwise angle needed to make vector $\vv{CA}$ parallel to (and heading the same direction with) $\vv{AB}$. Now, if $A,B,C$ are in counterclowkwise order then $\arg (b-a)-\arg (a-c)= \pi-\angle BAC$ and $\arg (a-c)-\arg (c-b)=\pi-\angle ACB$. Therefore $\angle BAC=\angle ACB$. If $A,B,C$ are in clockwise order then $\arg (b-a)-\arg (a-c)= \pi+\angle BAC$ and $\arg (a-c)-\arg (c-b)=\pi+\angle ACB$. Therefore $\angle BAC=\angle ACB$. This implies $ABC$ is isoceles with $|BC|=|AB|$, and $\frac{|AB|}{|CA|}=\frac{|CA|}{|BC|}$, or $|CA|^2=|AB|\cdot |BC|=|AB|\cdot |AB|=|AB|^2$, so $|CA|=|AB|=|BC|$. 
 
@@ -212,11 +229,24 @@ Let's consider the case where $A,B,C$ are not collinear. Now we show that $\angl
 
 If $A,B,C$ are collinear (which holds vacuously when any two of them coincide) then $\arg (b-a)-\arg (a-c)$ and $\arg (a-c)-\arg (c-b)$ are both 0 or $\pi$. If they are 0 then $\vv{AB}, \vv{CA}, \vv{BC}$ are all pointing to the same direction, which is impossible. If they are $\pi$, then $\vv{AB}$ and $\vv{BC}$ are pointing at the same direction while $\vv{CA}$ pointing to the opposite direction. This means $B$ is in between $A$ and $C$ and we have $|CA|=|AB|+|BC|$. Now $1>\frac{|AB|}{|AB+BC|}=\frac{|AB|}{|CA|}=\frac{|CA|}{|BC|}=\frac{|AB+BC|}{|CA|}>1$ since we assumed that $|CA|, |AB|, |BC|>0$, contradiction.
 
+\textbf {Solution 2.} Cross multiplication yields $(b-a)(c-b)=(a-c)^2$, which can be rearranged as $a^2+b^2+c^2=ab+bc+ca$. This can be further rearranged as $b^2+c^2-bc=ab+ac-a^2$, or $(a-c)(b-a)=(c-b)^2$. We have seen from solution 1 that $A, B, C$ are pairwise distinct, so $b-a, c-b, a-c\neq 0$. So the equation  $(a-c)(b-a)=(c-b)^2$ is now $\frac{b-a}{a-c}=\frac{a-c}{c-b}=\frac{c-b}{b-a}$. W.L.O.G. let $|c-b|\ge |a-c|, |b-a|$. Then from $\frac{a-c}{c-b}=\frac{c-b}{b-a}$ we have $1\ge \frac{|a-c|}{|c-b|}=\frac{|c-b|}{|b-a|}\ge 1$ we have $1=\frac{|a-c|}{|c-b|}=\frac{|c-b|}{|b-a|}$ so $|a-c|=|c-b|=|b-a|$.
+
+\textbf {Solution 3.} We incorporate the identity of $a^2+b^2+c^2=ab+bc+ca$ in solution 2 and the transformation of $a,b,c$ into $A,B,C$ as in cartesian coordinates in solution 1. Now $a^2+b^2+c^2=ab+bc+ca$ is equivalent to $(b-a)^2+(c-b)^2+(a-c)^2=0$, which means the vectors $(b-a)^2, (c-b)^2, (a-c)^2$ form a triangle. If $A,B,C$ are collinear, then there exists real numbers $x, y, z$ such that $b-a, c-b, a-c$ can be written as $kx, ky, kz$ for some complex constant k. This means $k^2(x^2+y^2+z^2)=0$ so either $k=0$ or $x=y=z=0$, meaning that $A,B,C$ all coincide an therefore $b-a=c-b=a-c=0$. Otherwise, we know that the vector $\arg ((b-a)^2)=2\arg (b-a)$ so the vector $(b-a)^2$ is parallel to the vector formed by reflecting the $x$-axis in the line containing vector $b-a$.Similarly $(c-b)^2$ and $(a-c)^2$ are parallel to the relection of $x$-axis in line containing vectors $c-b$ and $a-c$, respectively.
+
+Denote $A', B', C'$ as the vertices determined by the intersections of $c-b, a-c, b-a$, then $\angle A'\in \{2\angle A, \pi -2\angle A\}$ for $A$ acute, and $\{2\pi-2\angle A, 2\angle A-\pi\}$ for $A$ obtuse. In either case $|\sin\angle A'|=|\sin\angle 2A|=|2\sin\angle A\cos\angle A|$. Simlarly $|2\sin\angle B\cos\angle B|=|\sin\angle B'|$ and $|\sin\angle C'|=|2\sin\angle C\cos\angle C|$. Therefore $|2\sin\angle A\cos\angle A|:|2\sin\angle B\cos\angle B|:|2\sin\angle C\cos\angle C|$
+$=|\sin\angle A'|:|\sin\angle B'|:|\sin\angle C'|$
+$=|B'C'|:|A'C'|:|A'B'|$
+$=|b-c|^2:|c-a|^2:|a-b|^2$
+$=|BC|^2:|AC|^2:|AB|^2$
+$=|\sin\angle A|^2:|\sin\angle B|^2:|\sin\angle C|^2$.
+This yields $|\tan\angle A|=|\tan\angle B|=|\tan\angle C|$ and we have $\angle B=\angle A$ or $\angle B=\pi-\angle A$. However, since $\angle C>0$ (as $A,B,C$ are not collinear) $\angle B<\pi-\angle A$ so $\angle B=\angle A$ must hold. Similarly $|angle A=\angle C$. Therefore $\triangle ABC$ is equilateral as claimed.
+
 \end{enumerate}
 
 \section{Extra practice 10.}
 \begin{enumerate}
-\item Let $\alpha=e^{\frac{2\pi}{5}i}$, then $1, \alpha, \alpha^2, \alpha^3, \alpha^4$ are the roots of $x^5-1=(x-1)(x^4+x^3+x^2+x+1)$. Now write this polynomial as $(x-1)(x-\alpha)(x-\alpha^2)(x-\alpha^3)(x-\alpha^4)$. 
+\item Both solutions below are demonstrated by Professor Stephen New in MATH 145 lecture:
+\textbf {Solution 1.} Let $\alpha=e^{\frac{2\pi}{5}i}$, then $1, \alpha, \alpha^2, \alpha^3, \alpha^4$ are the roots of $x^5-1=(x-1)(x^4+x^3+x^2+x+1)$. Now write this polynomial as $(x-1)(x-\alpha)(x-\alpha^2)(x-\alpha^3)(x-\alpha^4)$. 
 Now, $(x-\alpha)(x-\alpha^4)$\\
 $=x^2-(\alpha+\alpha^4)x+\alpha^5$\\
 = $x^2-(\cos \frac{2\pi}{5}+i\sin\frac{2\pi}{5}+\cos\frac{8\pi}{5}+i\sin\frac{8\pi}{5})+e^{2\pi}$\\
@@ -234,6 +264,19 @@ $=\sin 2\pi \cos\frac{2\pi}{5}-\cos 2\pi \sin\frac{2\pi}{5}$
 $=0\cdot \cos \frac{2\pi}{5}-1\cdot \sin \frac{2\pi}{5}$
 $=-\sin \frac{2\pi}{5}$.
  Similarly, $(x-\alpha^2)(x-\alpha^3)=x^2-2\cos\frac{4\pi}{5}+1$. Now we have $x^4+x^3+x^2+x+1=(x^2-2\cos\frac{2\pi}{5}+1)(x^2-2\cos\frac{4\pi}{5}+1)$. Equating coefficient of $x^3$ yield $1=-2(\cos\frac{2\pi}{5}+\cos\frac{4\pi}{5})$, or $\cos\frac{2\pi}{5}+\cos\frac{4\pi}{5}$ = $\frac{-1}{2}$. Equating the corefficient of $x^2$ gives $1=1+1+(2\cos\frac{2\pi}{5})(2\cos\frac{4\pi}{5})=2+4\cos\frac{2\pi}{5}\cos\frac{4\pi}{5}$. Thus $\cos\frac{2\pi}{5}\cos\frac{4\pi}{5}=-\frac{1}{4}$. From here we know that $\cos\frac{2\pi}{5}$ and $\cos\frac{4\pi}{5}$ are the roots of the equation $y^2+\frac{1}{2}y-\frac{1}{4}y=0$, which gives $y=\dfrac{-\frac{1}{2}\pm\sqrt{(\frac{1}{2})^2-4(1)(\frac{-1}{4})}}{2}=\dfrac{-\frac{1}{2}\pm\sqrt{\frac{5}{4}}}{2}=\dfrac{-1\pm\sqrt{5}}{4}.$ Since $\frac{2\pi}{5}<\frac{\pi}{2}$, $\cos\frac{2\pi}{5}>0$ but as $\frac{-1-\sqrt{5}}{4}<0$, we have $\cos\frac{2\pi}{5}=\frac{-1+\sqrt{5}}{4}.$
+
+\textbf {Solution 2.} Consider the triangle $ABC$ with $\angle A=\frac{\pi}{5}$ and $\angle B=\angle C=\frac{2\pi}{5}$. Let $D$ be on segment $AB$ such that $\angle BDC=\frac{2\pi}{5}$. Notice also that $\angle DAC=\angle DCA=\frac{\pi}{5}$, so that $BC=DC=DA$ and $AB=AC$. By sine rule, $\frac{AB}{BC}=\frac{\sin \frac{2\pi}{5}}{\sin \frac{\pi}{5}}=\frac{2\sin \frac{\pi}{5}\cos\frac{\pi}{5}}{\sin \frac{\pi}{5}}=2\cos\frac{\pi}{5}$. Moreover, $\triangle ABC$ is similar to $\triangle CBD$ so $\frac{AB}{BC}=\frac{BC}{BD}=\frac{DA}{BD}=\frac{AB-BD}{BD}=\frac{AB}{BD}-1=\frac{AB}{BC}\cdot\frac{BC}{BD}-1
+\frac{AB}{BC}\cdot\frac{AB}{BC}-1
+=(\frac{AB}{BC})^2-1$.
+Thus the fraction $\frac{AB}{BC}$ is the root of $x=x^2-1$, or $x^2-x-1=0$. Since the product of roots is -1 which is negative, the eqution has a positive root and a negative root. Taking the positive root gives 
+$2\cos\frac{\pi}{5}=\frac{AB}{BC}=x$
+$=\frac{1+\sqrt{5}}{2}$,
+giving $\cos\frac{\pi}{5}=\frac{1+\sqrt{5}}{4}$.
+Finally, double angle formula gives us $\cos\frac{2\pi}{5}$
+$=2(\cos\frac{\pi}{5})^2-1$
+$=2(\frac{1+\sqrt{5}}{4})^2-1$
+$=2(\frac{6+2\sqrt{5}}{16})-1$
+$=\frac{\sqrt{5}-1}{4}$, as desired.
 
 \item Let $P(x)$ and $Q(x)$ be our primitive polynomials. Let $P(x)Q(x)=c_0+c_1x+\cdots +c_n x^n$ for some $n\ge 0$. If $\gcd (c_0, c_1, \cdots c_n)=d>1$ then $d$ has a prime divisor $q$ and $q|d$. Since $d|c_i$ for all $i\in [1,n]$ we have $q|c_i$ for all $i\in [1,n]$ by transitivity of divisibility. We then have prime number $q$ dividing all coefficient of $P(x)Q(x)$. Conseuqnetly, if there exists no prime number that divides all coefficient of $P(x)Q(x)$ then $\gcd (c_0, c_1, \cdots c_n)=1$, and it suffices to show the former (no such prime number).
 
