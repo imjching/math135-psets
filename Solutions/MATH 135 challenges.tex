@@ -2,6 +2,8 @@
 \usepackage{amsmath,amssymb,pgf,tikz,fullpage,parskip,esvect}
 \usepackage{mathrsfs}
 \usepackage{multicol}
+\usepackage{graphicx}
+
 \title{Challenges}
 \author{ Anzo Teh Zhao Yang}
 \date{December 21, 2016}
@@ -29,7 +31,7 @@
 \textbf {Solution.} We show that $p=3$. Indeed, if $3|p$ then we must have $p=3$, and if $3\nmid p$ we have $p\equiv \pm 1\pmod{3}$ so $p^2+2\equiv (\pm 1)^2+2=1+2=3\equiv 0\pmod {3}$. This means $3=p^2+2$, or $p=\pm 1$, contradiction. Hence $p=3$, and $p^3+2=3^3+2=29$ is a prime.
 
 \item Express the following statement in symbolic form and prove that it is true:\\
-There exists a real number $L$ such that for every positive real number $\epsilon$, there exists a $\delta$ such that for all real numbers $x$, if $|x|<\delta$, then $|3x-L|<\epsilon$.
+There exists a real number $L$ such that for every positive real number $\epsilon$, there exists a positive real number $\delta$ such that for all real numbers $x$, if $|x|<\delta$, then $|3x-L|<\epsilon$.
 
 \textbf {Solution.} In first order number theory (don't worry if you haven't heard of it; it's in MATH 145 syllabus) we could write $\exists L(\forall\epsilon [0<\epsilon \to(\exists\delta [0<\delta\land (\forall x [0<x+\delta \land x<\delta\to 3x+\epsilon<L\land 3x<L+\epsilon ])])])$. Notice that this is unnecessarily complicated and hardly readable but in first order number theory only constants, variables, parenthesis, $+, \times, \neg, \exists, \forall, \land, \lor, \to, \leftrightarrow, <, =$ are allowed. We could have written as $\exists L(\forall \epsilon>0(\exists\delta>0 (|x|<\delta \to |3x-L|<\epsilon)))$.
 
@@ -39,56 +41,73 @@ We show that $L=0$ works (in fact, $L=0$ is the only number you should think of)
 
 \section {Extra practice 3.}
 \begin{enumerate}
-\item Suppose such $a,b$ exist. From $a,b>0$ we have $a^4=b^4+b+1>b^4+b>b^4$, so $a>b$, and since $a,b\in\mathbb{Z}$ we have $a\ge b+1$ by the discreteness property of the integers. Now $b^4+b+1=a^4\ge (b+1)^4=b^4+4b^3+6b^2+4b+1$, or $4b^3+6b^2+3b\le 0$, contradicting that $b\ge 1$.
+\item Prove that there are no positive integers $a$ and $b$ such that $b^4+b+1=a^4.$
 
-\item Let $a,b,c$ be the side lengths, with $c$ being the length of the hypothenuse. Given that $a^2+b^2=c^2$, we need to prove that one of $a,b,c$ is divisible by 3. Suppose not, that $3\nmid a, b, c$. Then $a\equiv \pm 1\pmod {3}$ and $a^2\equiv 1\pmod {3}$. Similarly $b^2\equiv c^2\equiv 1\pmod {3}$. Now $2=1+1\equiv a^2+b^2=c^2\equiv 1\pmod {3},$ contradiction.
+\textbf{Solution.} Suppose such $a,b$ exist. From $a,b>0$ we have $a^4=b^4+b+1>b^4+b>b^4$, so $a>b$, and since $a,b\in\mathbb{Z}$ we have $a\ge b+1$ by the discreteness property of the integers. Now $b^4+b+1=a^4\ge (b+1)^4=b^4+4b^3+6b^2+4b+1$, or $4b^3+6b^2+3b\le 0$, contradicting that $b\ge 1$.
+
+\item Prove that the length of at least one side of a right-angled triangle with integer side lengths must be divisible by 3.
+
+\textbf{Solution.} Let $a,b,c$ be the side lengths, with $c$ being the length of the hypothenuse. Given that $a^2+b^2=c^2$, we need to prove that one of $a,b,c$ is divisible by 3. Suppose not, that $3\nmid a, b, c$. Then $a\equiv \pm 1\pmod {3}$ and $a^2\equiv 1\pmod {3}$. Similarly $b^2\equiv c^2\equiv 1\pmod {3}$. Now $2=1+1\equiv a^2+b^2=c^2\equiv 1\pmod {3},$ contradiction.
 \end{enumerate}
 
 \section {Extra practice 4.}
 \begin{enumerate}
-\item 
-Let's rephrase our problem into this form: For each positive integer $n$ there exists a unique set $\{i_1, i_2,\cdots i_x\}$ such that $2\le i_1<i_2<\cdots <i_x$, $i_{j+1}-i_j\ge 2$ for all $j\in [1, x-1]$, and $n= F_{i_1}+F_{i_2}+\cdots F_{i_x}$ (we note that $F_2=1$).
+\item Prove that for every positive integer, there exists a unique way to write the integer as the sum of distinct non-consecutive Fibonacci numbers.
+
+\textbf{Solution.} 
+Let's rephrase our problem into this form: For each positive integer $n$ there exists a unique set $\{i_1, i_2,\cdots ,i_x\}$ such that $i_1\ge 2$, $i_{j+1}-i_j\ge 2$ for all $j\in [1, x-1]$, and $n= F_{i_1}+F_{i_2}+\cdots +F_{i_x}$ (we note that $F_2=1$).
 
 \emph {Existence.}
-We go by strong induction on each positive integer $n$. Base cases: $1= F_2,2=F_3,3=F_4,1+3=F_2+F_4,5=F_5$. Now let this statement to be true for $1,2,\cdots , k-1$ for some $k\ge 6$. Since the Fibanacci sequence $F_i$ is unbounded and increasing, we can choose positive integer $p$ such that $p$ is the biggest positive integer with $F_p\le k.$ If $F_p=k$, write $k=F_p$. Otherwise we have $F_p<k<F_{p+1}=F_p+F_{p-1}$, or $0<k-F_{p}<F_{p-1}$. Now by our induction hypothesis, $k-F_{p}$ = $F_{i_1}+F_{i_2}+\cdots F_{i_x}$ for some $x\ge 1$, $2\le i_1<i_2<\cdots <i_x$ and $i_{j+1}-i_j\ge 2, \forall j\in [1,x-1]$. But from $k-F_p<F_{p-1}$ we have $i_x<p-1$. Therefore $k=F_{i_1}+F_{i_2}+\cdots F_{i_x}+F_p$ with $p-i_x\ge 2$.
+We go by strong induction on each positive integer $n$. Base cases: $1= F_2,2=F_3,3=F_4,4=1+3=F_2+F_4,5=F_5$. Now let this statement to be true for $1,2,\cdots , k-1$ for some $k\ge 6$. Since the Fibanacci sequence $F_i$ is unbounded and increasing, we can choose positive integer $p$ such that $p$ is the biggest positive integer with $F_p\le k.$ If $F_p=k$, write $k=F_p$. Otherwise we have $F_p<k<F_{p+1}=F_p+F_{p-1}$, or $0<k-F_{p}<F_{p-1}$. Now by our induction hypothesis, $k-F_{p}$ = $F_{i_1}+F_{i_2}+\cdots+ F_{i_x}$ for some $x\ge 1$, $i_1\ge 2$ and $i_{j+1}-i_j\ge 2, \forall j\in [1,x-1]$. But from $k-F_p<F_{p-1}$ we have $i_x<p-1$. Therefore $k=F_{i_1}+F_{i_2}+\cdots +F_{i_x}+F_p$ with $p-i_x\ge 2$.
 
 \emph {Uniqueness.} We start with this claim:\\
 Let $2\le i_1<\cdots <i_x$ be integers satisfying $i_{j+1}-i_j\ge 2$ for all $j\in [1,x-1].$ Then $F_{i_1}+F_{i_2}+\cdots F_{i_x}<F_{i_{x}+1}$.\\
-Proof: we proceed by inducting on $x$. If $x=1$ then we obviously have $F_{i_1}<F_{i_1}+F_{i_1-1}=F_{i_1+1}$ as $F_{i_1-1}\ge F_1=1$. Let us suppose that $F_{i_1}+F_{i_2}+\cdots +F_{i_{x-1}}<F_{i_{x-1}+1}$. Then $F_{i_1}+F_{i_2}+\cdots + F_{i_x}<F_{i_{x-1}+1}+F_{i_x}\le F_{i_{x}-1}+F_{i_x}=F_{i_{x}+1}$ since $i_{x-1}\le i_x-2$. This completes the induction proof.
+Proof: we proceed by inducting on $x$. If $x=1$ then we obviously have $F_{i_1}<F_{i_1}+F_{i_1-1}=F_{i_1+1}$ as $F_{i_1-1}\ge F_1=1$. Let us suppose that $F_{i_1}+F_{i_2}+\cdots +F_{i_{x-1}}<F_{i_{x-1}+1}$. Then $F_{i_1}+F_{i_2}+\cdots + F_{i_x}<F_{i_{x-1}+1}+F_{i_x}\le F_{i_{x}-1}+F_{i_x}=F_{i_{x}+1}$ since $i_{x-1}\le i_x-2$. This completes the induction proof. $\square$
 
 Now we proceed with our main problem. Again we induct on $n$. For $n=1$ our only choice is $F_2=1$. Now let $1,2,\cdots , k-1$ to be written uniquely as sum of distinct non-consecutive Fibonacci numbers for some $k\ge 2$. Suppose that 
 $k=F_{i_1}+F_{i_2}+\cdots +F_{i_x}$
 $=F_{j_1}+F_{j_2}+\cdots +F_{j_y}$,
-with $2\le i_1<i_2<\cdots <i_x$, $i_{j+1}-i_j\ge 2$ for all $j\in [1, x-1]$ and $2\le j_1<j_2<\cdots <j_x$, $j_{w+1}-j_w\ge 2$ for all $w\in [1, y-1]$.
+with $i_1\ge 2$, $i_{j+1}-i_j\ge 2$ for all $j\in [1, x-1]$ and $j_1\ge 2$, $j_{w+1}-j_w\ge 2$ for all $w\in [1, y-1]$.
 Let $p$ be the greatest positive integer with $F_p\le k$, so $F_p\le k<F_{p+1}$. If $i_x>p$ then 
 $k=F_{i_1}+F_{i_2}+\cdots +F_{i_x}$
 $\ge F_{i_x}$
 $\ge F_{p+1}>k$ which is impossible. If $i_x<p$ then from above 
-$k=F_{i_1}+F_{i_2}+\cdots F_{i_x}$
-$<F_{i_{x}+1}\le F_p\le k,$ again a contradition. Hence $i_x=p,$ and similarly $j_y=p$. If $F_p=k$ then we have $x=y=1$ and $i_x=j_y=p$, so it has a unique representation in this case. Otherwise, we have $k-F_p=F_{i_1}+F_{i_2}+\cdots F_{i_{x-1}}=F_{j_1}+F_{j_2}+\cdots +F_{j_{y-1}}$. By induction hypothesis, 
-$\{i_1, i_2,\cdots i_{x-1}\}$
-$=\{j_1, j)2, \cdots j_{y-1}\}$ so 
-$\{i_1, i_2,\cdots i_x\}$
-$=\{i_1, i_2,\cdots i_{x-1}\}\cup \{p\}$
-$=\{j_1, j)2, \cdots j_{y-1}\}\cup\{p\}$
-$=\{j_1, j)2, \cdots j_y\}$, 
+$k=F_{i_1}+F_{i_2}+\cdots +F_{i_x}$
+$<F_{i_{x}+1}\le F_p\le k,$ again a contradition. Hence $i_x=p,$ and similarly $j_y=p$. If $F_p=k$ then we have $x=y=1$ and $i_x=j_y=p$, so it has a unique representation in this case. Otherwise, we have $k-F_p=F_{i_1}+F_{i_2}+\cdots +F_{i_{x-1}}=F_{j_1}+F_{j_2}+\cdots +F_{j_{y-1}}$. By induction hypothesis, 
+$\{i_1, i_2,\cdots ,i_{x-1}\}$
+$=\{j_1, j_2, \cdots ,j_{y-1}\}$ so 
+$\{i_1, i_2,\cdots ,i_x\}$
+$=\{i_1, i_2,\cdots ,i_{x-1}\}\cup \{p\}$
+$=\{j_1, j)2, \cdots ,j_{y-1}\}\cup\{p\}$
+$=\{j_1, j)2, \cdots ,j_y\}$, 
 establishing the uniqueness for $k$.
 
-\item\textbf {Answer.} $2^n-1$.\\
-Denote the pegs as $P_1$, $P_2$, $P_3$ and denote the rings as $r_1, r_2, \cdots r_n$ where for all $i, j$ with $i<j$ we have diameter of $r_i$ less than that of $r_j$ (which means $r_1$ on the top while $r_n$ at the bottom.) Call $E(i, j\to k)$ as operation of moving $r_i$ from $P_j$ to $P_k$. Call pair of congiguration $(C, C')$ \emph{associative} if:\\
+\item You are given three pegs. On one of the pegs is a tower made up of $n$ rings placed on top of one another so that as you move down the tower each successive ring has a larger diameter than the previous ring. The object of this puzzle is to reconstruct the tower on one of the other pegs by moving one ring at a time, from one peg to another. However, you can never have a ring above any smaller ring on any of the three pegs. A demonstration of this can be found at http://wiki.sagemath.org/animate courtesy
+of Pablo Angulo. Find a formula for the minimum steps required to solve the Tower of Hanoi puzzle and prove that your answer is correct.
+
+\textbf {Answer.} $2^n-1$.\\
+\textbf{Solution.} Denote the pegs as $P_1$, $P_2$, $P_3$ and denote the rings as $r_1, r_2, \cdots ,r_n$ where for all $i, j$ with $i<j$ we have diameter of $r_i$ less than that of $r_j$ (which means $r_1$ on the top while $r_n$ at the bottom.) Call $E(i, j\to k)$ as operation of moving $r_i$ from $P_j$ to $P_k$. Call pair of congiguration $(C, C')$ \emph{associative} if:\\
 $\bullet$ $C$ and $C'$ are legal, i.e. no bigger ring is above smaller ring.\\
 $\bullet$ For some $k\ge 1$, $C$ has $k$ rings and $C'$ has $k+1$ rings (So in each associative pair the left element has one fewer ring than right element).\\
 $\bullet$ For each $i\in [1,k]$, the location of $r_i$ (i.e. in $P_1, P_2$ or $P_3$) is the same in boh $C$ and $C'$ (both in peg 1, both in peg 2, or both in peg 3).\\
 We claim that for each associative pair $(C,C')$ (with $C$ having $k$ ring and $C'$ having $k+1$ rings), and each $x, y, z$ with $x\in [1,k]$ and $y, z\in [1,3]$, $E(x, y\to z)$ is a valid move in $C$ iff this same move is valid in $C'$. Moreover, if $E(x, y\to z)$ is valid in either case, and if $D, D'$ are obtained from performing $E(x, y\to z)$ on $C, C'$, respectively, $(D, D'$) is associative. (Meaning that operations on rings $r_1, r_2, \cdots ,r_k$ preserve associativity.)
 
-Proof: Let $E(x,y\to z)$ be a valid move in $C$. This means $r_x$ is originally at $P_y$ and is on the top of $P_y$, so no ring in $P_y$ is smaller than $r_x$. Since the move to $P_z$ is valid, no ring in $P_z$ is smaller than $r_x$. Hence, each $r_i$ with $i<x$ must be at a peg other than $P_y$ and $P_z$. Now consider $C'$, and by the definition of associativity with $C$ we know that in $C'$, $r_x$ is originally at $P_y$ and for all $i< x$, since $x\le k$ we have $i< k$ so $r_i$ is on a peg other than $P_y$ and $P_z$. Consequently, $P_y$ and $P_z$ has all rings larger or equal to $r_x$, so it is legal to move $r_x$ from $P_y$ to $P_z$. Now the $(D, D')$ is associative, since both configurations are legal, and all rings are still in the same position (as compared with $C$ and $C'$) except for $r_x$, which are both in $P_z$. The case where $E(x, y\to z)$ is completely analogous provided that $x\le k$.$\square$
+Proof: Let $E(x,y\to z)$ be a valid move in $C$. This means $r_x$ is originally at $P_y$ and is on the top of $P_y$, so no ring in $P_y$ is smaller than $r_x$. Since the move to $P_z$ is valid, no ring in $P_z$ is smaller than $r_x$. Hence, each $r_i$ with $i<x$ must be at a peg other than $P_y$ and $P_z$. Now consider $C'$, and by the definition of associativity with $C$ we know that in $C'$, $r_x$ is originally at $P_y$ and for all $i< x$, since $x\le k$ we have $i< k$ so $r_i$ is on a peg other than $P_y$ and $P_z$. Consequently, $P_y$ and $P_z$ has all rings larger or equal to $r_x$, so it is legal to move $r_x$ from $P_y$ to $P_z$. Now the $(D, D')$ is associative, since both configurations are legal, and all rings are still in the same position (as compared with $C$ and $C'$) except for $r_x$, which are both in $P_z$. The claim that where $E(x, y\to z)$ is valid in $C'$ implies $E(x, y\to z)$ is valid in $C$ is completely analogous provided that $x\le k$.$\square$
+
+
+\graphicspath{ {E:/UW Fall 2016/ }}
+\begin{figure}[h]
+\includegraphics{Towerofhanoi.jpg}
+\centering
+\caption{Diagram illustrating $E(1, 2\to 3)$ as we move the smallest ring from $P_2$ to $P_3$}
+\end{figure}
 
 We proceed to our main problem by inducting on $n$. For $n=1$ it is straightforward to see that all we need to do is to move the only ring to one of the other pegs, hence one step needed (and we cannot do it in 0 step, so 1 step is minimum).
 
-Now suppose that for some $k$, the minimal number of steps required is $2^k-1$. W.L.O.G. let $r_1, r_2,\cdots ,r_{k+1}$ be in $P_1$. Denote this configuration as $C'$. Throughout the solution we introduce $C$ as the configuration such that $(C, C')$ is associative. The associativity holds troughout our whole process as all operations preserve associativity (this is true even when $r_{k+1}$ is moved in $C'$ and nothing is done in $C$ as we will see later).
-First we show that $2^{k+1}-1$ steps is attainable. Now in $C$ there exists operations $P(x_1, y_1\to z_1)$, $P(x_2, y_2\to z_2)$, $\cdots$, $P(x_{2^k-1}, y_{2^k-1}\to z_{2^k-1})$ that moves all $r_1, r_2, \cdots , r_k$ to peg 2. It follows that we can apply $E(x_1, y_1\to z_1)$, $E(x_2, y_2\to z_2)$, $\cdots$, $E(x_{2^k-1}, y_{2^k-1}\to z_{2^k-1})$ to $C'$. Moreover, all rings $r_1, r_2,\cdots ,r_k$ in $C'$ are now in $P_2$. Now we haven't touched $r_{k+1}$ in $C'$ yet, so we can place it at $P_3$, Since associativity is independent of the position of $r_{k+1}$ in $C'$, $(C, C')$ is still associative ater this move (we do nothing on $C$ for this round). By symmetry there exists a $2^k-1$-step operation in $C$ to move all rings from $P_2$ to $P_3$, so this is the same for $C'$ as well.The total number of steps is therefore $(2^k-1)+1+(2^k-1)$ = $2(2^k)-1$ = $2^{k+1}-1$.
+Now suppose that for some $k$, the minimal number of steps required to move a tower with $k$ rings to another peg is $2^k-1$. W.L.O.G. let $r_1, r_2,\cdots ,r_{k+1}$ be in $P_1$. Denote this configuration as $C'$. Throughout the solution we introduce $C$ as the configuration such that $(C, C')$ is associative. The associativity holds troughout our whole process as all operations preserve associativity (this is true even when $r_{k+1}$ is legally moved in $C'$ and nothing is done in $C$ as we will see later).
+First we show that we can move a tower with $k+1$ rings to another pegs using $2^{k+1}-1$ steps. Now in $C$ there exists operations $E(x_1, y_1\to z_1)$, $E(x_2, y_2\to z_2)$, $\cdots$, $E(x_{2^k-1}, y_{2^k-1}\to z_{2^k-1})$ that moves all $r_1, r_2, \cdots , r_k$ to peg 2. It follows that we can apply $E(x_1, y_1\to z_1)$, $E(x_2, y_2\to z_2)$, $\cdots$, $E(x_{2^k-1}, y_{2^k-1}\to z_{2^k-1})$ to $C'$, resulting all rings $r_1, r_2,\cdots ,r_k$ in $C'$ be in $P_2$. Now we haven't touched $r_{k+1}$ in $C'$ yet, so we can perform $E(k+1, 1\to 3)$ to place it at $P_3$, Since associativity is independent of the position of $r_{k+1}$ in $C'$, $(C, C')$ is still associative ater this move (we do nothing on $C$ for this round). By symmetry there exists a $2^k-1$-step operation in $C$ to move all rings from $P_2$ to $P_3$, so this is the same for $C'$ as well. We now have another tower in $C'$ at peg 3 and the total number of steps is therefore $(2^k-1)+1+(2^k-1)$ = $2(2^k)-1$ = $2^{k+1}-1$.
 
-Let's now show that $2^{k+1}-1$ is the minimum. First, notice that our task requires us to move $r_{k+1}$ from $P_1$ to other peg. Suppose that we move this ring at step $g+1$. To do so, all $r_1, r_2,\cdots ,r_k$ must have been moved to other pegs. Moreover, one of the pegs 2 or 3 must be empty, since the $r_{k+1}$ has the largst radius and cannot be placed on the other rings. W.L.O.G. we assume that peg 3 is empty. This means there exist operations $P(x_1, y_1\to z_1)$, $P(x_2, y_2\to z_2)$, $\cdots$, $P(x_g, y_g\to z_g)$ involving $r_1, r_2,\cdots ,r_k$ in $C'$. Now in $C$ the exact sequence of operations $P(x_1, y_1\to z_1)$, $P(x_2, y_2\to z_2)$, $\cdots$, $P(x_g, y_g\to z_g)$ also move all first $k$ rings to $P_2$ (as associativity is preserved at all times), and by inductive hypothesis this requires at least $2^k-1$ steps. Thus $g\ge 2^k-1$. Now at step $g+1$ we move $r_{k+1}$ to $P_3$. Let the additional number of steps needs as $h$ and consider the sequence of the next $h$ steps $P(x_{g+2}, y_{g+2}\to z_{g+2})$, $P(x_{g+3}, y_{g+3}\to z_{g+3})$, $\cdots$, $P(x_{g+h+1}, y_{g+h+1}\to z_{g+h+1})$. If the final position (after $h$ steps) of the rings are at $P_3$ (for $C'$) then during the $h$ steps we have already moved $r_1, r_2, \cdots r_k$ to $P_3$. Consider $P(x_{g+2}, y_{g+2}\to z_{g+2})$, $P(x_{g+3}, y_{g+3}\to z_{g+3})$, $\cdots$, $P(x_{g+h+1}, y_{g+h+1}\to z_{g+h+1})$ in $C$, which is moving all $r_1, r_2, \cdots r_k$ from $P_2$ to $P_3$. This means $h\ge 2^k-1$. On the other hand if the final position of the rings are at $P_2$, then we have to vacate $P_2$ and place all $r_1, r_2,\cdots r_k$ to $P_1$ (which again takes $2^k-1$ steps) before placing $r_{k+1}$ on $P_2$ again, so this takes more than $2^k-1+1=2^k>2^k-1$ steps. Therefore, the total number of steps is $g+h+1$ $\ge (2^k-1)+(2^k-1)+1$ = $2^{k+1}-1$.
+Let's now show that $2^{k+1}-1$ is the minimum. First, notice that our task requires us to move $r_{k+1}$ from $P_1$ to other peg. Suppose that we move this ring at step $g+1$. To do so, all $r_1, r_2,\cdots ,r_k$ must have been moved to other pegs. Moreover, one of the pegs 2 or 3 must be empty, since the $r_{k+1}$ has the largst radius and cannot be placed on the other rings. W.L.O.G. we assume that peg 3 is empty. This means there exist operations $E(x_1, y_1\to z_1)$, $E(x_2, y_2\to z_2)$, $\cdots$, $E(x_g, y_g\to z_g)$ involving $r_1, r_2,\cdots ,r_k$ in $C'$ that move all $r_1, r_2,\cdots , r_k$ to $P_2$. Now in $C$ the exact sequence of operations $E(x_1, y_1\to z_1)$, $E(x_2, y_2\to z_2)$, $\cdots$, $E(x_g, y_g\to z_g)$ also move all first $k$ rings to $P_2$ (as associativity is preserved at all times), and by inductive hypothesis this requires at least $2^k-1$ steps. Thus $g\ge 2^k-1$. Now at step $g+1$ we move $r_{k+1}$ to $P_3$. Let the additional number of steps needed to form a tower at either peg (other than $P_1$) as $h$ and consider the sequence of the next $h$ steps $E(x_{g+2}, y_{g+2}\to z_{g+2})$, $E(x_{g+3}, y_{g+3}\to z_{g+3})$, $\cdots$, $E(x_{g+h+1}, y_{g+h+1}\to z_{g+h+1})$. If the final position (after $h$ steps) of the rings are at $P_3$ (for $C'$) then during the $h$ steps we have already moved $r_1, r_2, \cdots ,r_k$ to $P_3$. Consider $E(x_{g+2}, y_{g+2}\to z_{g+2})$, $E(x_{g+3}, y_{g+3}\to z_{g+3})$, $\cdots$, $E(x_{g+h+1}, y_{g+h+1}\to z_{g+h+1})$ in $C$, which is moving all $r_1, r_2, \cdots r_k$ from $P_2$ to $P_3$. This means $h\ge 2^k-1$. On the other hand if the final position of the rings are at $P_2$, then we have to vacate $P_2$ and place all $r_1, r_2,\cdots r_k$ to $P_1$ (which again takes $2^k-1$ steps) before placing $r_{k+1}$ on $P_2$ again, so this takes more than $2^k-1+1=2^k>2^k-1$ steps. Therefore, the total number of steps is $g+h+1$ $\ge (2^k-1)+(2^k-1)+1$ = $2^{k+1}-1$.
 
 \textbf {Comment.} Intuitively, we could have shortened the solution and say that "if we need $2^k-1$ steps to move all rings when $n=k$, then we need $2^k-1$ steps to move the first $k$ rings to a single other peg when $n=k+1$". However, this does not address a potential (seemingly stupid, but nevertheless legitimate) question that we shall ask: what if the bottom ring $r_{k+1}$ has the superpower and help to speed up the process? Why can't it impede some intermediate process?
 
@@ -96,21 +115,35 @@ Let's now show that $2^{k+1}-1$ is the minimum. First, notice that our task requ
 
 \section{Extra practice 5.}
 \begin{enumerate}
-\item Let $x$ be any divisor of $a-1$. We claim that $x|n\Leftrightarrow x|\frac{a^n-1}{a-1}$. Indeed, since $a\equiv 1\pmod {x}$, we have $\frac{a^n-1}{a-1}=a^{n-1}+a^{n-2}+\cdots a+1\equiv \underbrace{1+1+\cdots +1}_{\text {$n$ times}}=n\pmod {x}$. So $\frac{a^n-1}{a-1}\equiv 0$ iff $n\equiv 0$ in modulo $x$, justifying the claim.
+\item Prove that for any integers $a\neq 1$ and $n\in\mathbb{N}$, $\gcd \left (\frac{a^n-1}{a-1}, a-1\right)=\gcd (n, a-1)$.
+
+\textbf{Solution 1.} Let $x$ be any divisor of $a-1$. We claim that $x|n\Leftrightarrow x|\frac{a^n-1}{a-1}$. Indeed, since $a\equiv 1\pmod {x}$, we have $\frac{a^n-1}{a-1}=a^{n-1}+a^{n-2}+\cdots +a+1\equiv \underbrace{1+1+\cdots +1}_{\text {$n$ times}}=n\pmod {x}$. So $\frac{a^n-1}{a-1}\equiv 0$ iff $n\equiv 0$ in modulo $x$, justifying the claim.
 
 Now if $x=\gcd (n, a-1)$ then $x|n, x|a-1$ and by the claim above, $x|\frac{a^n-1}{a-1}$ so $x$ is a common divisor of $\frac{a^n-1}{a-1}$ and $a-1$, so $\gcd (n, a-1)\le\gcd (\frac{a^n-1}{a-1}, a-1).$ Similarly, if $x=\gcd (\frac{a^n-1}{a-1}, a-1)$ then $x|\frac{a^n-1}{a-1}$ and $x|a-1$, so by the claim above $x|n$. Therefore $x=\gcd (\frac{a^n-1}{a-1}, a-1)$ is the common divisor of $n$ and $a-1$, so $\gcd (\frac{a^n-1}{a-1}, a-1)\le \gcd(a-1, n)$. Combining the inequalties above yields $\gcd (\frac{a^n-1}{a-1}, a-1)= \gcd(a-1, n)$.
 
-\item We claim that $\gcd (n,n+k)=k, \forall k\in [1,20]$ by inducting on $k$. Notice that $\gcd (n,n+k)|n$ and $\gcd (n,n+k)|n+k$ so $\gcd (n,n+k)|(n+k)-n=k$. Thus $\gcd (n,n+k)\le k.$ Therefore for base case $k=1$ we have $\gcd (n,n+1)\le 1$ and since 1 divides both $n+1$ and $n$ we have $\gcd (n, n+1)=1$. Now suppose that $\gcd (n, n+i)=i$ for some $1\le i\le 19$. Then $\gcd (n,n+i+1)>\gcd(n,n+i)=i$ so $\gcd (n,n+1+1)\ge i+1$. On the other hand we have justified that $\gcd (n,n+i+1)\le i+1$ as of above. Therefore $\gcd (n, n+i+1)=i+1$, completing the induction claim.
+\textbf{Solution 2.} We use the fact that $\gcd (b, bq+r)=\gcd (b, r)=\gcd(b,bs+r)$ for any integers $b,q,r,s$. Let $b=a-1$ in this case and it suffices to prove that $n\equiv \frac{a^n-1}{a-1}\pmod{a-1}.$ Now, $\frac{a^n-1}{a-1}-n=\frac{a^n-an+n-1}{a-1}$. Let $P(a)=a^n-an+n-1$ so $P(1)=1-n+n-1=0$. Also, $P'(a)=na^{n-1}-n$ so $P'(1)=n-n=0$. Since $P(1)=P'(1)=0$, $P(a)$ is divisible by $(a-1)^2$ and hence $a-1|\frac{P(a)}{a-1}=\frac{a^n-1}{a-1}-n$.
+
+\item Let $n$ be a positive integer for whih $\gcd(n, n+1)<\gcd (n, n+2)<\cdots <\gcd (n, n+20)$. Prove that $\gcd (n, n+20)<\gcd (n, n+21)$.
+
+\textbf{Solution.} We claim that $\gcd (n,n+k)=k, \forall k\in [1,20]$ by inducting on $k$. Notice that $\gcd (n,n+k)|n$ and $\gcd (n,n+k)|n+k$ so $\gcd (n,n+k)|(n+k)-n=k$. Thus $\gcd (n,n+k)\le k.$ Therefore for base case $k=1$ we have $\gcd (n,n+1)\le 1$ and since 1 divides both $n+1$ and $n$ we have $\gcd (n, n+1)=1$. Now suppose that $\gcd (n, n+i)=i$ for some $1\le i\le 19$. Then $\gcd (n,n+i+1)>\gcd(n,n+i)=i$ so $\gcd (n,n+1+1)\ge i+1$. On the other hand we have justified that $\gcd (n,n+i+1)\le i+1$ as of above. Therefore $\gcd (n, n+i+1)=i+1$, completing the induction claim.
 
 Now for all integers $k$ with $1\le k\le 20$ we have $\gcd (n,n+k)=k$ so $k|n$ and $k|n+k$. This means $3|n, 7|n$ and since $\gcd (3,7)=1$, lcm(3,7)=$3\times 7=21$ so $21|n$ and $\gcd (n, n+21)=21>20=\gcd (n, n+20)$. 
 
 \textbf {Comment.} Notice that the problem is true if we replace 21 with any number that is not a prime power. A slightly harder version of this problem is Problem 3 in International Mathematics Tournament of Towns, Senior O-Level:\\ \emph{http://www.math.toronto.edu/oz/turgor/archives/TT2013F\_SOsolutions.pdf}. Have fun trying!
 
-\item\textbf {Solution 1.} First, we show that $2^x-1|2^{xy}-1$, $\forall x, y\ge 0$. Indeed, $2^x\equiv 1\pmod {2^x-1}$ so $2^{xy}=(2^x)^{y}\equiv 1^y\equiv 1\pmod {2^x-1}$. Therefore, since $\gcd (a,b)$ divides both $a$ and $b$, we have $2^{\gcd(a,b)}-1$ divides both $2^a-1$ and $2^b-1$, and therefore $2^{\gcd (a,b)}-1\le \gcd (2^a-1, 2^b-1)$.
+\item Let $a$ and $b$ be nonnegative integers. Prove that $\gcd (2^a-1, 2^b-1)=2^{\gcd (a, b)}-1$.
 
-Now first suppose that $a,b>0$. To prove the other direction we need a corollary: for all odd positive integers $x$, if $x|2^a-1$ and $x|2^b-1$ then $x|2^{\gcd (a,b)}-1$. Let $d$ be the minimum positive integer such that $x|2^d-1$ (this $d$ exists because $x|2^{\phi (x)}-1$ by Euler-Fermat theorem). We show that for all $k$, $x|2^k-1\Leftrightarrow d|k$. By Euclidean's remainder theorem we can write $k=bd+r$ with $0\le r<d$. Therefore $2^k=2^{bd+r} = 2^{bd}\cdot 2^r = (2^d)^b\cdot 2^r \equiv 1^b\cdot 2^r=2^r\pmod {x}$. If $r>0$, then by the minimality of $d$ we have $2^r\not\equiv 1\pmod {x}$ but if $r=0$, $2^r=1$. Thus $x|2^d-1\Leftrightarrow x|2^r-1\Leftrightarrow r=0\Leftrightarrow d|k$.
+\textbf {Solution 1.} First, we show that $2^x-1|2^{xy}-1$, $\forall x, y\ge 0$. Indeed, $2^x\equiv 1\pmod {2^x-1}$ so $2^{xy}=(2^x)^{y}\equiv 1^y\equiv 1\pmod {2^x-1}$. Therefore, since $\gcd (a,b)$ divides both $a$ and $b$, we have $2^{\gcd(a,b)}-1$ divides both $2^a-1$ and $2^b-1$, and therefore $2^{\gcd (a,b)}-1\le \gcd (2^a-1, 2^b-1)$.
 
-Now let's proceed with our claim, and here we let $x=\gcd (2^a-1, 2^b-1)$ (since 2 does not divide either of $2^a-1, 2^b-1$ for $a,b>0$, $\gcd (2^a-1, 2^b-1)$ is also odd, so the claim above applies to this $x$.) If we define $d$ as of above, the smallest positive integer with $x|2^d-1$, then from $x|2^a-1$ $x|2^b-1$ we have $d|a$ and $d|b$. This would imply $d|pa+qb$ for all $p,q\in\mathbb{Z}$, and since there exists such $p$ and $q$ with $pa+qb=\gcd (a,b)$ by Euclidean algorithm, $d|\gcd (a,b)$. But this implies $x=\gcd (2^a-1, 2^b-1)|2^d-1|2^{\gcd (a,b)}-1$, so $\gcd (2^a-1, 2^b-1)\le 2^{\gcd (a,b)}-1$. Summing the two inequalities we have $2^{\gcd (a,b)}-1= \gcd (2^a-1, 2^b-1)$ for $a,b$ positive.
+Now first suppose that $a,b>0$. To prove the other direction we need a corollary:
+$$\text{For all positive integers $x$, if $x|2^a-1$ and $x|2^b-1$ then $x|2^{\gcd (a,b)}-1$.} $$
+Proof: Since $a,b>0$, $2^a-1$ and $2^b-1$ are odd and therefore $x$ must be odd for $x|2^a-1$ and $x|2^b-1$ to hold true. It follows that $\gcd (2, x)=1$ and therefore $x|2^{\phi (x)}-1$ by Euler-Fermat theorem. Now we can choose $d$ as the minimum positive integer such that $x|2^d-1$. 
+
+We show that for all $k\in\mathbb{Z}_{\ge 0}$, $x|2^k-1\Leftrightarrow d|k$. By Euclidean's remainder theorem we can write $k=bd+r$ with $0\le r<d$. Therefore $2^k=2^{bd+r} = 2^{bd}\cdot 2^r = (2^d)^b\cdot 2^r \equiv 1^b\cdot 2^r=2^r\pmod {x}$. If $r>0$, then by the minimality of $d$ we have $2^r\not\equiv 1\pmod {x}$ but if $r=0$, $2^r=1$. Thus $x|2^d-1\Leftrightarrow x|2^r-1\Leftrightarrow r=0\Leftrightarrow d|k$.
+
+Finally, from $x|2^a-1$ $x|2^b-1$ we have $d|a$ and $d|b$. This would imply $d|pa+qb$ for all $p,q\in\mathbb{Z}$, and since there exists such $p$ and $q$ with $pa+qb=\gcd (a,b)$ by Euclidean algorithm, $d|\gcd (a,b)$. This implies $x|2^{\gcd(a,b)}-1$. $\square$
+
+Now let $x=\gcd (2^a-1, 2^b-1)$, then since $x$ divides both $2^a-1, 2^b-1$ we have $x$ divides $2^{\gcd (a,b)}-1$, and hence $\gcd (2^a-1, 2^b-1)\le 2^{\gcd (a,b)}-1$. Summing the two inequalities we have $2^{\gcd (a,b)}-1= \gcd (2^a-1, 2^b-1)$ for $a,b$ positive.
 
 In the case $a=0$ then $2^{\gcd (a,b)}-1=2^{\gcd (0,b)}-1=2^b-1=\gcd (0, 2^b-1)=\gcd (2^0-1, 2^b-1)=\gcd (2^a-1, 2^b-1)$. The case $b=0$ is completely analogous.
 
@@ -120,9 +153,17 @@ In the case $a=0$ then $2^{\gcd (a,b)}-1=2^{\gcd (0,b)}-1=2^b-1=\gcd (0, 2^b-1)=
 
 \section {Extra practice 6.}
 \begin{enumerate}
-\item (a) Yes, since 1+2+3+6=12=$2\times 6$.\\
-(b) No, since 1+7=8$\neq 14$.\\
-(c) Since $2^k-1$ is prime, all divisors of $n=2^{k-1}(2^k-1)$ can be written in the form of $ab$ with $a=2^i$ for some $i$ with $0\le i\le k-1$ and $b\in\{1, 2^k-1\}$, due to the theorem of prime factorization. Therefore, the sum of divisors is\\ $1(1)+1(2^k-1)+2(1)+2(2^k-1)+\cdots + 2^{k-1}(1)+(2^{k-1})(2^k-1)$\\
+\item An integer $n$ is perfect if the sum of all of its positive divisors (including 1 and itself) is $2n$.
+
+(a) Is 6 a perfect number? Give reasons for your answer.\\
+\textbf{Answer.} Yes, since 1+2+3+6=12=$2\times 6$.
+
+(b) Is 7 a perfect number? Give reasons for your answer.\\
+\textbf{Answer.} No, since 1+7=8$\neq 14$.
+
+(c) Prove that if $k$ is a positive integer and $2^k-1$ is prime, then $2^{k-1}(2^k-1)$ is perfect.
+
+\textbf {Solution 1.} Since $2^k-1$ is prime, all divisors of $n=2^{k-1}(2^k-1)$ can be written in the form of $ab$ with $a=2^i$ for some $i$ with $0\le i\le k-1$ and $b\in\{1, 2^k-1\}$, due to the theorem of prime factorization. Therefore, the sum of divisors is\\ $1(1)+1(2^k-1)+2(1)+2(2^k-1)+\cdots + 2^{k-1}(1)+(2^{k-1})(2^k-1)$\\
 $=(1+2^k-1)+2(1+2^k-1)+\cdots 2^{k-1}(1+2^k-1)$\\
 $=(1+2+\cdots 2^{k-1})(1+2^k-1)$\\
 $=(2^k-1)(2^k)$\\
@@ -130,25 +171,49 @@ $=2(2^{k-1})(2^k-1)$.
 
 Hence this number is perfect.
 
-\item We denote $p_1, p_2,\cdots p_k$ as all the primes dividing either $a$ or $b$ or both. By theorem of prime factorization, we can write $a=\displaystyle\prod_{i=1}^{k} p_i^{a_i}$ and $b=\displaystyle\prod_{i=1}^{k} p_i^{b_i}$. Therefore $\gcd (a^n, b^n)$ 
+\textbf {Solution 2.} Denote $\sigma (n)$ as the sum of divisors of $n$, and it is well-known that of $n=\displaystyle\prod_{i=1}^{k} p_i^{b_i}$ ($p_i$ are prime for all $i\in [1,k]$), then $\sigma (n)=\displaystyle\prod_{i=1}^{k} \frac{p_i^{b_i+1}-1}{p_i-1}$. Observe that for all positive integers $x$ and $y$, $\sigma (x)\sigma (y)=\sigma (xy)$ if $\gcd (x,y)=1$ (i.e. $x$ and $y$ do not share any prime divisor).
+
+Since $\gcd (2^k-1, 2^{k-1})$
+$=\gcd (2^{k-1}-1, 2^{k-1})$
+$=\gcd (1, 2^{k-1})$
+$=1$, (repeated using of Euclidean's algorithm),
+$\sigma (2^{k-1}(2^k-1))$
+$=\sigma(2^{k-1})\sigma(2^k-1)$
+$=(1+2+4+\cdots + 2^{k-1})(1+2^k-1)$
+$=2^k(2^k-1)$
+$=2(2^{k-1})(2^k-1)$.
+
+\item Prove that $\gcd (a^n,b^n)=\gcd (a,b)^n$.
+
+\textbf{Solution.} We denote $p_1, p_2,\cdots ,p_k$ as all the primes dividing either $a$ or $b$ or both. By theorem of prime factorization, we can write $a=\displaystyle\prod_{i=1}^{k} p_i^{a_i}$ and $b=\displaystyle\prod_{i=1}^{k} p_i^{b_i}$. Therefore $\gcd (a^n, b^n)$ 
 = $\gcd \left(\left(\displaystyle\prod_{i=1}^{k} p_i^{a_i}\right)^n, \left(\displaystyle\prod_{i=1}^{k} p_i^{b_i}\right)^n\right)$
 = $\gcd \left(\displaystyle\prod_{i=1}^{k} p_i^{na_i}, \displaystyle\prod_{i=1}^{k} p_i^{nb_i}\right)$
 = $\displaystyle\prod_{i=1}^{k} p_i^{\min (na_i, nb_i)}$
 = $\displaystyle\prod_{i=1}^{k} p_i^{n\min (a_i, b_i)}$
 = $\left(\displaystyle\prod_{i=1}^{k} p_i^{\min (a_i, b_i)}\right)^n$
-= $(\gcd (a,b))^n.$ Notice that we used the fact that $\min (nx, ny)=n\min (x,y)$ for $n\ge 0$ since if $x\le y$ then $nx=ny=n(x-y)\le 0$ so $nx\le ny$ and $\min (nx, ny)=nx=n\min (x,y)$. Similarly if $x\ge y$ then $\min (nx, ny)=ny=n\min (x,y)$.
+= $(\gcd (a,b))^n.$ 
+Notice that we used the fact that $\min (nx, ny)=n\min (x,y)$ for $n\ge 0$ since if $x\le y$ then $nx=ny=n(x-y)\le 0$ so $nx\le ny$ and $\min (nx, ny)=nx=n\min (x,y)$. Similarly if $x\ge y$ then $\min (nx, ny)=ny=n\min (x,y)$.
 \end{enumerate}
 
 \section {Extra practice 7.}
 \begin{enumerate}
-\item For clarity we denote $b_i$ as the digit appended on the end of $a_{i-1}$ to form $a_i$. We will use this fact: if $a_i=k=a_j$ for some $k>0$ then $i=j$ (since $a_i$ and $a_j$ has the same number of digits). We split into several scenarios:\\
+\item Let $a_1$ be any number. Create a sequence $a_1, a_2, a_3,$ where $a_n$ is formed by appending a digit from 0 to 8 to the end of $a_{n-1}$. Show that this sequence contains infinitely many composite numbers. What happens if you allow for 9? Can you still guarantee that infinitely many composite number must occur?
+
+\textbf{Solution.} For clarity we denote $b_i$ as the digit appended on the end of $a_{i-1}$ to form $a_i$. We will use this fact: if $a_i=k=a_j$ for some $k>0$ then $i=j$ (since $a_i$ and $a_j$ has the same number of digits). We split into several scenarios:\\
 \emph{Scenario 1.} If $b_i\in\{0,2,4,6,8\}$ for infinitely many $i$, then $a_i$ is even for such $i$, hence composite (except possibly when $a_i$ is a single digit number 2, which happens at most once). If $b_i$ is 0 or 5 for infinitely many $i$ then for such $i$, $5|a_i$, hence composite (except possibly when $a_i$ is a single digit number 5, which happens at most once).
 
-\emph {Scenario 2.} Suppose that scenario 1 didn't happen. Then there exists an $N$ such that for all $k\ge N$ we have $b_k\in\{1,3,7\}$. Now further assume that for this scenario, $b_i\in\{1,7\}$ infinitely many times. Then there exists sequence $N\le c_1<c_2<\cdots$ that contains all 1s and 7s. In other words, for all $i\in\mathbb{N}$, we have $b_{c_i}\in\{1,7\}$ (i.e. $b_{c_i}\equiv 1\pmod {3}$) and for all $j$ with $c_x<j<c_{x+1}$ some $x$, $b_j=3$. Also let $a_{c_1}\equiv g\pmod {3}$ for some $g\in\{0,1,2\}$. Now for all $i\ge 1$, $a_{c_{i+1}}\equiv a_{c_{i}}+b_{c_{i}+1}+\cdots + b_{c_{i+1}-1} + b_{c_{i+1}}\equiv a_{c_i}+3+3+\cdots +3+1\equiv a_{c_i}+1$ (we used the fact that for every integer $n$, $n$ is equal to its sum of digits in modulo 3). Inductively, $a_{c_{i+1}}\equiv a_{c_1}+i\equiv g+i\pmod {3}.$ Now if $i=3k-g$ for all $k\ge 1$, $a_{c_{i+1}}\equiv i+g=(3k-g)+g=3k\equiv 0\pmod{3}$, which is composite (except possibly when $a_i=3$ for some $i$, which can occur at most once).
+\emph {Scenario 2.} Suppose that scenario 1 didn't happen. Then there exists an $N$ such that for all $k\ge N$ we have $b_k\in\{1,3,7\}$. Now further assume that for this scenario, $b_i\in\{1,7\}$ infinitely many times. Then there exists sequence $N\le c_1<c_2<\cdots$ such that:\\
+$\bullet$ For all $i\in\mathbb{N}$, $b_{c_i}\in\{1,7\}$ (i.e. $b_{c_i}\equiv 1\pmod {3}$)\\
+$\bullet$ For all $j$ with $c_x<j<c_{x+1}$ some $x\ge 1$, $b_j=3$.\\
+Also let $a_{c_1}\equiv g\pmod {3}$ for some $g\in\{0,1,2\}$. Now for all $i\ge 1$, $a_{c_{i+1}}\equiv a_{c_{i}}+b_{c_{i}+1}+\cdots + b_{c_{i+1}-1} + b_{c_{i+1}}\equiv a_{c_i}+3+3+\cdots +3+1\equiv a_{c_i}+1$ (we used the fact that for every integer $n$, $n$ is equal to its sum of digits in modulo 3). Inductively, $a_{c_{i+1}}\equiv a_{c_1}+i\equiv g+i\pmod {3}.$ Now if $i=3k-g$ for all $k\ge 1$, $a_{c_{i+1}}\equiv i+g=(3k-g)+g=3k\equiv 0\pmod{3}$, which is composite (except possibly when $a_i=3$ for some $i$, which can occur at most once).
 
-\emph {Scenario 3.} Suppose that both scenarios 1 and 2 didn't happen, then there exists $N$ such that for all $k\ge N$, $b_k=3$. Let $m=a_N$, which ends with digit 3. If $3|m$ then $3|a_k$ for all $k\ge N$, hence $a_k$ composite except for at most once $a_k$ with $a_k=3$. Now let's assume $3\nmid m$. We can see that $\gcd (10, m)=1$ since $m$, which ends with digit 3, is divisible by neither 2 nor 5. Now, by Euler-Fermat theorem, for all positive integers $j$, $10^{j\phi(m)}=(10^{\phi (m)})^j\equiv 1^j\equiv 1\pmod {m}$, and we know the number $\underbrace{33\cdots 3}_{j\phi(m)\text{ times}}=3(\frac{10^{j\phi(m)}-1}{9})=\frac{10^{j\phi(m)}-1}{3}$  is divisible by $m$ since $m|10^{j\phi(m)}-1$ and $\gcd (m,3)=1$. Now for all $j\ge 1$, $a_{N+j\phi(m)}=a_N(10^{j\phi(m)})+\frac{10^{j\phi(m)}-1}{3}$ = $m(10^{j\phi(m)})+\frac{10^{j\phi(m)}-1}{3}$ is divisible by $m$ and greater than $m$ (since $\phi (m)\ge 1$), hence is composite. Q.E.D.
+\emph {Scenario 3.} Suppose that both scenarios 1 and 2 didn't happen, then there exists $N$ such that for all $k\ge N$, $b_k=3$. Let $m=a_N$, which ends with digit 3. If $3|m$ then $3|a_k$ for all $k\ge N$, hence $a_k$ composite except for at most once $a_k$ with $a_k=3$. Now let's assume $3\nmid m$. We can see that $\gcd (10, m)=1$ since $m$, which ends with digit 3, is divisible by neither 2 nor 5. Now, by Euler-Fermat theorem, for all positive integers $j$, $10^{j\phi(m)}=(10^{\phi (m)})^j\equiv 1^j\equiv 1\pmod {m}$, and we know the number $\underbrace{33\cdots 3}_{j\phi(m)\text{ times}}=3(\frac{10^{j\phi(m)}-1}{9})=\frac{10^{j\phi(m)}-1}{3}$  is divisible by $m$ since $m|10^{j\phi(m)}-1$ and $\gcd (m,3)=1$. Now for all $j\ge 1$, $a_{N+j\phi(m)}=a_N(10^{j\phi(m)})+\frac{10^{j\phi(m)}-1}{3}$ = $m(10^{j\phi(m)})+\frac{10^{j\phi(m)}-1}{3}$ is divisible by $m$ and greater than $m$ (since $\phi (m)\ge 1$), hence is composite (as $m\ge 3>1$). Q.E.D.
 
-\item\textbf {Solution 1.} We need this identity: For each $k\ge 1$, there exists an odd positive integer $c$ with $3^{2^k}-1=c\cdot 2^{k+2}$ (in other words the highest power of 2 that divides $3^{2^k}-1$ is $k+2$). Let's proceed by inducting on $k$. If $k=1$ then $3^{2^1}-1=8=2^3=1\cdot 2^{1+2}$. Now suppose that for some $p\ge 1$, $3^{2^p}-1=c\cdot 2^{p+2}$ for some odd positive integer $c$. Now $3^{2^{p+1}}-1=(3^{2^p}-1)(3^{2^p}+1)=c\cdot 2^{p+2}\cdot(c\cdot 2^{p+2}+2) = c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}$. Now $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ = $c^2\cdot 2^{p+1}+c.$ Since $p\ge 1$, $c^2\cdot 2^{p+1}$ is even but $c$ is odd, so $c^2\cdot 2^{p+1}+c$ = $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ is an odd integer, completing the claim.
+Notice that if we allow for both 3 and 9, then we might not be able to guarantee the existence of infinitely many composite numbers in scenario 3.
+
+\item Prove hat for any $k\in\mathbb{N}$ there exists $n\in\mathbb{N}$ such that $2^k|(3^n+5)$.
+
+\textbf {Solution 1.} We need this identity: For each $k\ge 1$, there exists an odd positive integer $c$ with $3^{2^k}-1=c\cdot 2^{k+2}$ (in other words the highest power of 2 that divides $3^{2^k}-1$ is $k+2$). Let's proceed by inducting on $k$. If $k=1$ then $3^{2^1}-1=8=2^3=1\cdot 2^{1+2}$. Now suppose that for some $p\ge 1$, $3^{2^p}-1=c\cdot 2^{p+2}$ for some odd positive integer $c$. Now $3^{2^{p+1}}-1=(3^{2^p}-1)(3^{2^p}+1)=c\cdot 2^{p+2}\cdot(c\cdot 2^{p+2}+2) = c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}$. Now $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ = $c^2\cdot 2^{p+1}+c.$ Since $p\ge 1$, $c^2\cdot 2^{p+1}$ is even but $c$ is odd, so $c^2\cdot 2^{p+1}+c$ = $\frac{c^2\cdot 2^{2p+4}+ c\cdot 2^{p+3}}{2^{p+3}}$ is an odd integer, completing the claim.
 
 Now for the main problem we proceed by inducting on $k$. For $k=1,2,3$ we can choose $n=1$, so that $3+5=8$ is divisible by 2,4, and 8. Now suppose that for some $k\ge 3$, we can find $n_k$ such that $2^k|3^{n_k}+5$. We want to prove that we can find $n_{k+1}$ such that $2^{k+1}|3^{n_{k+1}}+5.$ If $2^{k+1}|3^{n_k}+5$ then we can choose $n_{k+1}=n_k$. Otherwise, we can write $3^{n_k}+5=c\cdot 2^k$ for some odd $c$. Now choose $n_{k+1}=n_k+2^{k-2}$. Recall that by the lemma above we can write $3^{2^{k-2}}-1$ as $d\cdot 2^k$ for some odd $d$. Therefore, $3^{n_{k+1}}+5=3^{n_k+2^{k-2}}+(3^{n_k})(3^{2^{k-2}})+5=(c\cdot 2^k-5)(d\cdot 2^k+1)+5=cd\cdot 2^{2k}-5d\cdot 2^k+c\cdot 2^k -5 +5 = cd\cdot 2^{2k}+(c-5d)\cdot 2^k = (2^{k+1})(cd\cdot 2^{k-1}+\frac{c-5d}{2})$. Now since $k\ge 3$, $2^{k-1}$ is an integer and since $c$ and $5d$ are both odd, $c-5d$ is even and therefore $\frac{c-5d}{2}$ is an integer. Therefore $cd\cdot 2^{k-1}+\frac{c-5d}{2}$ is an integer and $2^{k+1}|3^{n_{k+1}}+5$, completing the induction proof.
 
@@ -161,7 +226,11 @@ Therefore $5+3^{j\phi (2^k)-j}\equiv 0\pmod {2^k}$. It then suffices to find one
 
 \section {Extra practice 9.}
 \begin{enumerate}
-\item Write $z=a+bi$ and $w=c+di$ for $a,b,c,d$ real. Then:
+\item Let $z, w\in\mathbb{C}$.\\
+(a) Prove that $|z+w|\le|z|+|w|$.\\
+(b) Prove that $||z|-|w||\le |z-w|\le |z|+|w|$.
+
+\textbf{Solution.} Write $z=a+bi$ and $w=c+di$ for $a,b,c,d$ real. Then:
 
 (a) $|z+w|=|(a+c)+(b+d)i|=\sqrt{(a+c)^2+(b+d)^2}$ while $|z|+|w|=\sqrt{a^2+b^2}+\sqrt{c^2+d^2}$. By Cauchy-Schrawz inequality we have $(a^2+b^2)(c^2+d^2)\ge (ac+bd)^2$. Therefore\\ 
 $(\sqrt{(a+c)^2+(b+d)^2})^2$\\
@@ -175,7 +244,9 @@ so $|z+w|=|(a+c)+(b+d)i|=\sqrt{(a+c)^2+(b+d)^2}\le \sqrt{a^2+b^2}+\sqrt{c^2+d^2}
 
 (b) The right inequality is almost similar as above. For the left inequality, by (a) we have $|z|=|w+(z-w)|\le |w|+|z-w|$ so $|z|-|w|\le |z-w|$. Also $|w|=|z+(w-z)|\le |z|+|w-z|=|z|+|z-w|$ (as $|a|=|-a|$ for all $a\in\mathbb{C})$ so $|w|-|z|\le |z-w|$. Comparing both inequalities yield $||z|-|w||\le |z-w|$.
 
-\item\textbf{Solution 1.} On the Cartesian plane, denote $A, B, C$ as the coordinate corresponding to $a,b,c$ on complex plane. Then in vector form $b-a=\vv{AB}$, $a-c=\vv{CA}$ and $c-b=\vv{BC}$. It suffices to prove that $A, B, C$ are the vertices of an equilateral triangle. Observe $a-c$ and $c-b$ cannot be zero (otherwise the quotient may not be defined) so $\frac{b-a}{c-b}=\frac{a-c}{c-b}\neq 0$, and $b-a$ cannot be zero too. Thus no two point coincide.
+\item Let $a,b,c\in\mathbb{C}$. Show that if $\frac{b-a}{a-c}=\frac{a-c}{c-b}$ then $|b-a|=|a-c|=|c-b|$.
+
+\textbf{Solution 1.} On the Cartesian plane, denote $A, B, C$ as the coordinate corresponding to $a,b,c$ on complex plane. Then in vector form $b-a=\vv{AB}$, $a-c=\vv{CA}$ and $c-b=\vv{BC}$. It suffices to prove that $A, B, C$ are the vertices of an equilateral triangle. Observe $a-c$ and $c-b$ cannot be zero (otherwise the quotient may not be defined) so $\frac{b-a}{c-b}=\frac{a-c}{c-b}\neq 0$, and $b-a$ cannot be zero too. Thus no two point coincide.
 
 Let's consider the case where $A,B,C$ are not collinear. Now we show that $\angle BAC=\angle ACB$. In subsequent solution we will talk about $\arg$ of vector in modulo $2\pi$. Now, $\arg (b-a)-\arg (a-c)$ = $\arg (\frac{b-a}{a-c})$ = $\arg (\frac{a-c}{c-b})$ = $\arg (a-c)-\arg (c-b)$. Also notice that $\arg (b-a)-\arg (a-c)$ is the counterclockwise angle needed to make vector $\vv{CA}$ parallel to (and heading the same direction with) $\vv{AB}$. Now, if $A,B,C$ are in counterclowkwise order then $\arg (b-a)-\arg (a-c)= \pi-\angle BAC$ and $\arg (a-c)-\arg (c-b)=\pi-\angle ACB$. Therefore $\angle BAC=\angle ACB$. If $A,B,C$ are in clockwise order then $\arg (b-a)-\arg (a-c)= \pi+\angle BAC$ and $\arg (a-c)-\arg (c-b)=\pi+\angle ACB$. Therefore $\angle BAC=\angle ACB$. This implies $ABC$ is isoceles with $|BC|=|AB|$, and $\frac{|AB|}{|CA|}=\frac{|CA|}{|BC|}$, or $|CA|^2=|AB|\cdot |BC|=|AB|\cdot |AB|=|AB|^2$, so $|CA|=|AB|=|BC|$. 
 
@@ -231,21 +302,62 @@ If $A,B,C$ are collinear (which holds vacuously when any two of them coincide) t
 
 \textbf {Solution 2.} Cross multiplication yields $(b-a)(c-b)=(a-c)^2$, which can be rearranged as $a^2+b^2+c^2=ab+bc+ca$. This can be further rearranged as $b^2+c^2-bc=ab+ac-a^2$, or $(a-c)(b-a)=(c-b)^2$. We have seen from solution 1 that $A, B, C$ are pairwise distinct, so $b-a, c-b, a-c\neq 0$. So the equation  $(a-c)(b-a)=(c-b)^2$ is now $\frac{b-a}{a-c}=\frac{a-c}{c-b}=\frac{c-b}{b-a}$. W.L.O.G. let $|c-b|\ge |a-c|, |b-a|$. Then from $\frac{a-c}{c-b}=\frac{c-b}{b-a}$ we have $1\ge \frac{|a-c|}{|c-b|}=\frac{|c-b|}{|b-a|}\ge 1$ we have $1=\frac{|a-c|}{|c-b|}=\frac{|c-b|}{|b-a|}$ so $|a-c|=|c-b|=|b-a|$.
 
-\textbf {Solution 3.} We incorporate the identity of $a^2+b^2+c^2=ab+bc+ca$ in solution 2 and the transformation of $a,b,c$ into $A,B,C$ as in cartesian coordinates in solution 1. Now $a^2+b^2+c^2=ab+bc+ca$ is equivalent to $(b-a)^2+(c-b)^2+(a-c)^2=0$, which means the vectors $(b-a)^2, (c-b)^2, (a-c)^2$ form a triangle. If $A,B,C$ are collinear, then there exists real numbers $x, y, z$ such that $b-a, c-b, a-c$ can be written as $kx, ky, kz$ for some complex constant k. This means $k^2(x^2+y^2+z^2)=0$ so either $k=0$ or $x=y=z=0$, meaning that $A,B,C$ all coincide an therefore $b-a=c-b=a-c=0$. Otherwise, we know that the vector $\arg ((b-a)^2)=2\arg (b-a)$ so the vector $(b-a)^2$ is parallel to the vector formed by reflecting the $x$-axis in the line containing vector $b-a$.Similarly $(c-b)^2$ and $(a-c)^2$ are parallel to the relection of $x$-axis in line containing vectors $c-b$ and $a-c$, respectively.
+\textbf {Solution 3.} We incorporate the identity of $a^2+b^2+c^2=ab+bc+ca$ in solution 2 and the transformation of $a,b,c$ into $A,B,C$ as in cartesian coordinates in solution 1. Now $a^2+b^2+c^2=ab+bc+ca$ is equivalent to $(b-a)^2+(c-b)^2+(a-c)^2=0$, which means the vectors $(b-a)^2, (c-b)^2, (a-c)^2$ form a triangle, i.e. there exist vertices $A', B', C'$ such that $\vv{A'B'}=(b-a)^2$, $\vv{C'A'}=(a-c)^2$ and $\vv{B'C'}=(c-b)^2$.  If $A,B,C$ are collinear, then there exists real numbers $x, y, z$ such that $b-a, c-b, a-c$ can be written as $kx, ky, kz$ for some complex constant k. This means $k^2(x^2+y^2+z^2)=0$ so either $k=0$ or $x=y=z=0$, meaning that $A,B,C$ all coincide an therefore $b-a=c-b=a-c=0$.
 
-Denote $A', B', C'$ as the vertices determined by the intersections of $c-b, a-c, b-a$, then $\angle A'\in \{2\angle A, \pi -2\angle A\}$ for $A$ acute, and $\{2\pi-2\angle A, 2\angle A-\pi\}$ for $A$ obtuse. In either case $|\sin\angle A'|=|\sin\angle 2A|=|2\sin\angle A\cos\angle A|$. Simlarly $|2\sin\angle B\cos\angle B|=|\sin\angle B'|$ and $|\sin\angle C'|=|2\sin\angle C\cos\angle C|$. Therefore $|2\sin\angle A\cos\angle A|:|2\sin\angle B\cos\angle B|:|2\sin\angle C\cos\angle C|$
-$=|\sin\angle A'|:|\sin\angle B'|:|\sin\angle C'|$
-$=|B'C'|:|A'C'|:|A'B'|$
-$=|b-c|^2:|c-a|^2:|a-b|^2$
-$=|BC|^2:|AC|^2:|AB|^2$
-$=|\sin\angle A|^2:|\sin\angle B|^2:|\sin\angle C|^2$.
-This yields $|\tan\angle A|=|\tan\angle B|=|\tan\angle C|$ and we have $\angle B=\angle A$ or $\angle B=\pi-\angle A$. However, since $\angle C>0$ (as $A,B,C$ are not collinear) $\angle B<\pi-\angle A$ so $\angle B=\angle A$ must hold. Similarly $|angle A=\angle C$. Therefore $\triangle ABC$ is equilateral as claimed.
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\definecolor{qqqqff}{rgb}{0.3333333333333333,0.3333333333333333,0.3333333333333333}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.7cm,y=0.7cm]
+\clip(-2.56860219218429,-8.257987523332675) rectangle (28.67645644359794,6.467944459792461);
+\draw (4.14,0.74)-- (6.2141909150811205,5.205014458701235);
+\draw (6.2141909150811205,5.205014458701235)-- (9.578612117619492,1.5680523751222524);
+\draw (4.14,0.74)-- (9.578612117619492,1.5680523751222524);
+\draw [dash pattern=on 5pt off 5pt] (-0.7202879334103035,0.)-- (4.14,0.74);
+\draw [dash pattern=on 5pt off 5pt] (3.7962382291576064,0.)-- (4.14,0.74);
+\draw [dash pattern=on 5pt off 5pt] (9.578612117619492,1.5680523751222524)-- (11.029160277406868,0.);
+\draw [dash pattern=on 5pt off 5pt] (-0.7202879334103035,0.)-- (2.8553976805183616,1.1146669342379316);
+\draw (2.8553976805183616,1.1146669342379316)-- (11.321862636622072,3.7539617591775603);
+\draw (11.321862636622072,3.7539617591775603)-- (10.417505220181273,-7.844588956470602);
+\draw (2.8553976805183616,1.1146669342379316)-- (10.417505220181273,-7.844588956470602);
+\draw (0.6102429038039885,-0.5689861373097724) node[anchor=north west] {$x$-axis};
+\draw (-1.7535137060334496,0.)-- (21.530847381675567,0.);
+\begin{scriptsize}
+\draw [fill=qqqqff] (6.2141909150811205,5.205014458701235) circle (2.5pt);
+\draw[color=qqqqff] (6.180014225834734,6.0196457924095) node {$A$};
+\draw [fill=qqqqff] (4.14,0.74) circle (2.5pt);
+\draw[color=qqqqff] (4.658515718353164,1.2649629565296128) node {$B$};
+\draw [fill=qqqqff] (9.578612117619492,1.5680523751222524) circle (2.5pt);
+\draw[color=qqqqff] (9.766403564898432,2.0800514426804506) node {$C$};
+\draw [fill=uuuuuu] (2.8553976805183616,1.1146669342379316) circle (1.5pt);
+\draw[color=uuuuuu] (3.1370172108715946,1.5094895023748642) node {$B'$};
+\draw [fill=uuuuuu] (10.417505220181273,-7.844588956470602) circle (1.5pt);
+\draw[color=uuuuuu] (10.961866677919666,-7.537992693899436) node {$A'$};
+\draw [fill=uuuuuu] (11.321862636622072,3.7539617591775603) circle (1.5pt);
+\draw[color=uuuuuu] (11.58676785063531,4.144942274262573) node {$C'$};
+\draw [fill=uuuuuu] (-0.7202879334103035,0.) circle (1.5pt);
+\draw[color=uuuuuu] (-0.5308809768071885,0.39553523796871903) node {};
+\draw [fill=uuuuuu] (3.7962382291576064,0.) circle (1.5pt);
+\draw[color=uuuuuu] (3.653239918767127,-0.5010620967972026) node {};
+\draw [fill=uuuuuu] (11.029160277406868,0.) circle (1.5pt);
+\draw[color=uuuuuu] (11.532428618225254,0.6672314000189983) node {};
+\end{scriptsize}
+\end{tikzpicture}
+
+Now consider the case where $A,B,C$ are not collinear. Let's refer to the points $A', B', C'$ as defined above.Notice that $\arg ((b-a)^2)=2\arg (b-a)$ so the vector $(b-a)^2$, (i.e. $\vv{A'B'}$) is parallel to the vector formed by reflecting the $x$-axis in the line containing vector $b-a$ (i.e. $\vv{AB}$). Similarly $(c-b)^2$ and $(a-c)^2$ are parallel to the relection of $x$-axis in line containing vectors $c-b$ and $a-c$, respectively. (We can in fact assume that $A'B', B'C', C'A'$ are the reflection of $x$-axis in $AB, BC, CA$ due to the property of similar triangles although we do not need that. However, we will use this assumption in the diagram given). This means 
+$\angle A'\in \{2\angle A, \pi -2\angle A\}$ for $A$ acute, and $\{2\pi-2\angle A, 2\angle A-\pi\}$ for $A$ obtuse. In either case $|\sin\angle A'|=|\sin\angle 2A|=|2\sin\angle A\cos\angle A|$. Simlarly $|2\sin\angle B\cos\angle B|=|\sin\angle B'|$ and $|\sin\angle C'|=|2\sin\angle C\cos\angle C|$. Therefore $|2\sin\angle A\cos\angle A|:|2\sin\angle B\cos\angle B|:|2\sin\angle C\cos\angle C|$\\
+$=|\sin\angle A'|:|\sin\angle B'|:|\sin\angle C'|$\\
+$=|B'C'|:|A'C'|:|A'B'|$ (by sine rule on$\triangle A'B'C'$)\\
+$=|b-c|^2:|c-a|^2:|a-b|^2$\\
+$=|BC|^2:|AC|^2:|AB|^2$ (by sine rule on $\triangle ABC$)\\
+$=|\sin\angle A|^2:|\sin\angle B|^2:|\sin\angle C|^2$.\\
+This yields $|\tan\angle A|=|\tan\angle B|=|\tan\angle C|$. From $0<\angle A, \angle B<\pi$ and $|\tan\angle A|=|\tan\angle B|$ we have $\angle B=\angle A$ or $\angle B=\pi-\angle A$. However, since $\angle C>0$ (as $A,B,C$ are not collinear) $\angle B<\pi-\angle A$ so $\angle B=\angle A$ must hold. Similarly $\angle A=\angle C$. Therefore $\triangle ABC$ is equilateral as claimed.
 
 \end{enumerate}
 
 \section{Extra practice 10.}
 \begin{enumerate}
-\item Both solutions below are demonstrated by Professor Stephen New in MATH 145 lecture:
+\item Show that the exact value of $\cos\left(\frac{2\pi}{5}\right)$ is $\frac{\sqrt{5}-1}{4}$.
+
+\textbf{Note.} Both solutions below are demonstrated by Professor Stephen New in MATH 145 lecture.\\
 \textbf {Solution 1.} Let $\alpha=e^{\frac{2\pi}{5}i}$, then $1, \alpha, \alpha^2, \alpha^3, \alpha^4$ are the roots of $x^5-1=(x-1)(x^4+x^3+x^2+x+1)$. Now write this polynomial as $(x-1)(x-\alpha)(x-\alpha^2)(x-\alpha^3)(x-\alpha^4)$. 
 Now, $(x-\alpha)(x-\alpha^4)$\\
 $=x^2-(\alpha+\alpha^4)x+\alpha^5$\\
@@ -263,12 +375,40 @@ $=\sin(2\pi-\frac{2\pi}{5})$
 $=\sin 2\pi \cos\frac{2\pi}{5}-\cos 2\pi \sin\frac{2\pi}{5}$
 $=0\cdot \cos \frac{2\pi}{5}-1\cdot \sin \frac{2\pi}{5}$
 $=-\sin \frac{2\pi}{5}$.
- Similarly, $(x-\alpha^2)(x-\alpha^3)=x^2-2\cos\frac{4\pi}{5}+1$. Now we have $x^4+x^3+x^2+x+1=(x^2-2\cos\frac{2\pi}{5}+1)(x^2-2\cos\frac{4\pi}{5}+1)$. Equating coefficient of $x^3$ yield $1=-2(\cos\frac{2\pi}{5}+\cos\frac{4\pi}{5})$, or $\cos\frac{2\pi}{5}+\cos\frac{4\pi}{5}$ = $\frac{-1}{2}$. Equating the corefficient of $x^2$ gives $1=1+1+(2\cos\frac{2\pi}{5})(2\cos\frac{4\pi}{5})=2+4\cos\frac{2\pi}{5}\cos\frac{4\pi}{5}$. Thus $\cos\frac{2\pi}{5}\cos\frac{4\pi}{5}=-\frac{1}{4}$. From here we know that $\cos\frac{2\pi}{5}$ and $\cos\frac{4\pi}{5}$ are the roots of the equation $y^2+\frac{1}{2}y-\frac{1}{4}y=0$, which gives $y=\dfrac{-\frac{1}{2}\pm\sqrt{(\frac{1}{2})^2-4(1)(\frac{-1}{4})}}{2}=\dfrac{-\frac{1}{2}\pm\sqrt{\frac{5}{4}}}{2}=\dfrac{-1\pm\sqrt{5}}{4}.$ Since $\frac{2\pi}{5}<\frac{\pi}{2}$, $\cos\frac{2\pi}{5}>0$ but as $\frac{-1-\sqrt{5}}{4}<0$, we have $\cos\frac{2\pi}{5}=\frac{-1+\sqrt{5}}{4}.$
+ Similarly, $(x-\alpha^2)(x-\alpha^3)=x^2-2\cos\frac{4\pi}{5}+1$. Now we have $x^4+x^3+x^2+x+1=(x^2-2\cos\frac{2\pi}{5}+1)(x^2-2\cos\frac{4\pi}{5}+1)$. Equating coefficient of $x^3$ yield $1=-2(\cos\frac{2\pi}{5}+\cos\frac{4\pi}{5})$, or $\cos\frac{2\pi}{5}+\cos\frac{4\pi}{5}$ = $\frac{-1}{2}$. Equating the corefficient of $x^2$ gives $1=1+1+(2\cos\frac{2\pi}{5})(2\cos\frac{4\pi}{5})=2+4\cos\frac{2\pi}{5}\cos\frac{4\pi}{5}$. Thus $\cos\frac{2\pi}{5}\cos\frac{4\pi}{5}=-\frac{1}{4}$. From here we know that $\cos\frac{2\pi}{5}$ and $\cos\frac{4\pi}{5}$ are the roots of the equation $y^2+\frac{1}{2}y-\frac{1}{4}y=0$, which gives $y=\dfrac{-\frac{1}{2}\pm\sqrt{(\frac{1}{2})^2-4(1)(\frac{-1}{4})}}{2}=\dfrac{-\frac{1}{2}\pm\sqrt{\frac{5}{4}}}{2}=\dfrac{-1\pm\sqrt{5}}{4}.$ Since $\frac{2\pi}{5}<\frac{\pi}{2}$, $\cos\frac{2\pi}{5}>0$ . As $\frac{-1-\sqrt{5}}{4}<0$, we have $\cos\frac{2\pi}{5}=\frac{-1+\sqrt{5}}{4}.$
 
-\textbf {Solution 2.} Consider the triangle $ABC$ with $\angle A=\frac{\pi}{5}$ and $\angle B=\angle C=\frac{2\pi}{5}$. Let $D$ be on segment $AB$ such that $\angle BDC=\frac{2\pi}{5}$. Notice also that $\angle DAC=\angle DCA=\frac{\pi}{5}$, so that $BC=DC=DA$ and $AB=AC$. By sine rule, $\frac{AB}{BC}=\frac{\sin \frac{2\pi}{5}}{\sin \frac{\pi}{5}}=\frac{2\sin \frac{\pi}{5}\cos\frac{\pi}{5}}{\sin \frac{\pi}{5}}=2\cos\frac{\pi}{5}$. Moreover, $\triangle ABC$ is similar to $\triangle CBD$ so $\frac{AB}{BC}=\frac{BC}{BD}=\frac{DA}{BD}=\frac{AB-BD}{BD}=\frac{AB}{BD}-1=\frac{AB}{BC}\cdot\frac{BC}{BD}-1
-\frac{AB}{BC}\cdot\frac{AB}{BC}-1
-=(\frac{AB}{BC})^2-1$.
-Thus the fraction $\frac{AB}{BC}$ is the root of $x=x^2-1$, or $x^2-x-1=0$. Since the product of roots is -1 which is negative, the eqution has a positive root and a negative root. Taking the positive root gives 
+\textbf {Solution 2.}
+
+\definecolor{zzttqq}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.5cm,y=0.5cm]
+\clip(-4.3,-4.54) rectangle (18.7,6.3);
+\draw [shift={(-1.94,1.24)},fill=black,fill opacity=0.1] (0,0) -- (-16.4096159392094:0.6) arc (-16.4096159392094:19.590384060790612:0.6) -- cycle;
+\draw [shift={(10.42,-2.4)},fill=black,fill opacity=0.1] (0,0) -- (91.59038406079061:0.6) arc (91.59038406079061:127.59038406079063:0.6) -- cycle;
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.1] (10.198988368818952,5.56020385881016) -- (-1.94,1.24) -- (10.42,-2.4) -- cycle;
+\draw [shift={(10.42,-2.4)},fill=black,fill opacity=0.1] (0,0) -- (127.5903840607906:0.6) arc (127.5903840607906:163.59038406079063:0.6) -- cycle;
+\draw [color=zzttqq] (10.198988368818952,5.56020385881016)-- (-1.94,1.24);
+\draw [color=zzttqq] (-1.94,1.24)-- (10.42,-2.4);
+\draw [color=zzttqq] (10.42,-2.4)-- (10.198988368818952,5.56020385881016);
+\draw (5.562307400969756,3.910032823073132)-- (10.42,-2.4);
+\begin{scriptsize}
+\draw [fill=black] (10.42,-2.4) circle (2.5pt);
+\draw[color=black] (10.56,-2.03) node {$C$};
+\draw [fill=black] (-1.94,1.24) circle (2.5pt);
+\draw[color=black] (-1.8,1.61) node {$A$};
+\draw [fill=black] (10.198988368818952,5.56020385881016) circle (2.5pt);
+\draw[color=black] (10.34,5.93) node {$B$};
+\draw[color=black] (-2.54,1.29) node {$36\textrm{\degre}$};
+\draw [fill=black] (5.562307400969756,3.910032823073132) circle (2.5pt);
+\draw[color=black] (5.7,4.29) node {$D$};
+\draw[color=black] (10.54,-1.07) node {$36\textrm{\degre}$};
+\draw[color=black] (9.3,-1.55) node {$36\textrm{\degre}$};
+\end{scriptsize}
+\end{tikzpicture}
+
+ Consider the triangle $ABC$ with $\angle A=\frac{\pi}{5}$ and $\angle B=\angle C=\frac{2\pi}{5}$. Let $D$ be on segment $AB$ such that $\angle BDC=\frac{2\pi}{5}$. Notice also that $\angle DAC=\angle DCA=\frac{\pi}{5}$, so that $BC=DC=DA$ and $AB=AC$. By sine rule, $\frac{AB}{BC}=\frac{\sin \frac{2\pi}{5}}{\sin \frac{\pi}{5}}=\frac{2\sin \frac{\pi}{5}\cos\frac{\pi}{5}}{\sin \frac{\pi}{5}}=2\cos\frac{\pi}{5}$. Moreover, $\triangle ABC$ is similar to $\triangle CBD$ so $\frac{AB}{BC}=\frac{BC}{BD}=\frac{DA}{BD}=\frac{AB-BD}{BD}=\frac{AB}{BD}-1=\frac{AB}{BC}\cdot\frac{BC}{BD}-1
+=\frac{AB}{BC}\cdot\frac{AB}{BC}-1
+=\left(\frac{AB}{BC}\right)^2-1$.
+Thus the fraction $\frac{AB}{BC}$ is the root of $x=x^2-1$, or $x^2-x-1=0$. Since the product of roots is -1 which is negative, the equation has a positive root and a negative root. Taking the positive root gives 
 $2\cos\frac{\pi}{5}=\frac{AB}{BC}=x$
 $=\frac{1+\sqrt{5}}{2}$,
 giving $\cos\frac{\pi}{5}=\frac{1+\sqrt{5}}{4}$.
@@ -278,7 +418,11 @@ $=2(\frac{1+\sqrt{5}}{4})^2-1$
 $=2(\frac{6+2\sqrt{5}}{16})-1$
 $=\frac{\sqrt{5}-1}{4}$, as desired.
 
-\item Let $P(x)$ and $Q(x)$ be our primitive polynomials. Let $P(x)Q(x)=c_0+c_1x+\cdots +c_n x^n$ for some $n\ge 0$. If $\gcd (c_0, c_1, \cdots c_n)=d>1$ then $d$ has a prime divisor $q$ and $q|d$. Since $d|c_i$ for all $i\in [1,n]$ we have $q|c_i$ for all $i\in [1,n]$ by transitivity of divisibility. We then have prime number $q$ dividing all coefficient of $P(x)Q(x)$. Conseuqnetly, if there exists no prime number that divides all coefficient of $P(x)Q(x)$ then $\gcd (c_0, c_1, \cdots c_n)=1$, and it suffices to show the former (no such prime number).
+\textbf {Comment.} The equality $\frac{AB}{BC}=\frac{AD}{BD}$ can also be established by using the angle bisector theorem to establish $\frac{AC}{BC}=\frac{AD}{BD}$ and the fact $AC=AB$.
+
+\item We call a polynomial with integer coefficients primitive if the greatest common divisor of all of its coefficients is 1. Prove that the product of two primitive polynomials is again primitive.
+
+\textbf{Solution.} Let $P(x)$ and $Q(x)$ be our primitive polynomials. Let $P(x)Q(x)=c_0+c_1x+\cdots +c_n x^n$ for some $n\ge 0$. If $\gcd (c_0, c_1, \cdots ,c_n)=d>1$ then $d$ has a prime divisor $q$ and $q|d$. Since $d|c_i$ for all $i\in [1,n]$ we have $q|c_i$ for all $i\in [1,n]$ by transitivity of divisibility. We then have prime number $q$ dividing all coefficient of $P(x)Q(x)$. Conseuqnetly, if there exists no prime number that divides all coefficient of $P(x)Q(x)$ then $\gcd (c_0, c_1, \cdots ,c_n)=1$, and it suffices to show the former (no such prime number).
 
 Now let $p$ be any prime number. Since $P(x)$, $Q(x)$ are both primitive, for each $P$ and $Q$ there exists a coefficient that is not divisible by $p$. Let $P=a_0+a_1x+\cdots + a_kx^k$ and $Q=b_0+b_1+\cdots b_mx^m$. Denote $i$ as the least integer with $a_i$ not divisible by $p$, and denote $j$ as the least integer with $b_j$ not divisible by $p$ (these $i, j$ exist by the least element property). We claim that $p\nmid c_{i+j}$. Indeed, $c_{i+j}=\displaystyle\sum_{r=0}^{i+j} a_rb_{i+j-r}$. For all $r< i$ we have $p|a_r$ by the minimality of $i$ so $p|a_rb_{i+j-r}$. For all $r>i$ we have $i+j-r<i+j-i=j$ so $p|b_{i+j-r}$ by the minimality of $j$ and $p|a_rb_{i+j-r}$ (convince yourself that this claim hold even as $i=0$ or $j=0$). Therefore $\displaystyle\sum_{r=0}^{i+j} a_rb_{i+j-r}\equiv a_ib_j\not\equiv 0\pmod{p}$, since none of $a_i$ and $b_j$ is divisible by $p$.
 
