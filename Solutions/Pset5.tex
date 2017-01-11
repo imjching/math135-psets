@@ -20,7 +20,7 @@
 %%%
 
 \title{MATH 135: Extra Practice Set 5}
-\author{imjching}
+\author{Jay Ching Lim}
 
 \newtheorem{question}{Question}
 
@@ -28,9 +28,9 @@
 
 \begin{center}
     \textbf{MATH 135: Extra Practice Set 5} \\
-    December 21$^{st}$ 2016 \\
+    January 11$^{th}$ 2017 \\
 
-    imjching
+    Jay Ching Lim
 \end{center}
 
 \bigskip
@@ -39,38 +39,99 @@
 
 % Question 1
 \begin{question}
-	$(a)$ Use the Extended Euclidean Algorithm to find three integers $x$, $y$ and $d = gcd(1112, 768)$ such that $1112x + 768y = d$. $(b)$ Determine integers $s$ and $t$ such that $768s - 1112t = gcd(768, -1112)$.
+	$(a)$ Use the Extended Euclidean Algorithm to find three integers $x$, $y$ and $d = \text{gcd}(1112, 768)$ such that $1112x + 768y = d$. $(b)$ Determine integers $s$ and $t$ such that $768s - 1112t = \text{gcd}(768, -1112)$.
 \end{question}
 
-\bigskip
+\begin{enumerate}
+	\item[(a)]  We have $1112x + 768y = \text{gcd}(1112, 768) = d$. By EEA,
+
+\begin{center}
+	\begin{tabular}{c|c|c|c}
+		x & y & r & q \\
+		\hline
+		1 & 0 & 1112 & 0\\
+		0 & 1 & 768 & 0\\
+		1 & -1 & 344 & 1\\
+		-2 & 3 & 80 & 2\\
+		9 & -13 & 24 & 4\\
+		-29 & 42 & 8 & 3\\
+		96 & -139 & 0 & 3\\
+	\end{tabular}
+\end{center}
+
+From the second last row, we have $$1112(-29) + 768(42) = \text{gcd}(1112, 768) = 8.$$ Thus, $x = -29$, $y= 42$, and $d = 8$.
+
+	\item[(b)] Observe that $\text{gcd}(768, -1112) = \text{gcd}(-1112, 768) = \text{gcd}(1112, 768)$.
+	
+Let $s = y$ and $t = -x$. Then we need to determine integers $s$ and $t$ such that $768y + 1112x = \text{gcd}(1112, 768)$, which is the same equation as before. Since we have $1112(-29) + 768(42) = \text{gcd}(1112, 768) = 8$, we can deduce that $s = 42$ and $t = -(-29) = 29$.
+
+\end{enumerate}
 
 % Question 2
 \begin{question}
-	Prove that for all a $\in \mathbb{Z}$, $gcd(9a + 4, 2a + 1) = 1$.
+	Prove that for all a $\in \mathbb{Z}$, $\text{gcd}(9a + 4, 2a + 1) = 1$.
 \end{question}
+
+\begin{proof}
+	Let $a \in \mathbb{Z}$. We will apply GCD WR repeatedly.\\
+	
+	Since $9a+4$ = $4(2a+1)+a$, $\text{gcd}(9a+4,2a+1)=\text{gcd}(2a+1,a)$.\\
+	Since $2a+1$ = $2(a)+1$, $\text{gcd}(2a+1,a)=\text{gcd}(a,1)$.\\
+	Since $a$ = $a(1)+0$, $\text{gcd}(a,1)=\text{gcd}(1,0)=\vert1\vert=1$.\\
+	
+	By the chain of equalities, we get
+	\begin{align*}
+		\text{gcd}(9a+4,2a+1) &= \text{gcd}(2a+1,a)\\
+		&=\text{gcd}(a,1)\\
+		&=\text{gcd}(1,0)\\
+		&=\vert1\vert\\
+		&=1\text{, as required.}
+	\end{align*}
+\end{proof}
 
 \bigskip
 
 % Question 3
 \begin{question}
-	Let $gcd(x, y) = d$. Express $gcd(18x + 3 y, 3x)$ in terms of $d$ and prove that you are correct.
+	Let $\text{gcd}(x, y) = d$. Express $\text{gcd}(18x + 3 y, 3x)$ in terms of $d$ and prove that you are correct.
 \end{question}
 
 \bigskip
+
+We know that $18x + 3y=6(3x) + 3y$. So by GCD WR, $\text{gcd}(18x + 3y,3x)=\text{gcd}(3x,3y)=3\cdot\text{gcd}(x,y)=3d$.
+
+\begin{proof}
+	Since $d=gcd(x,y)$, $d | x$ and $d | y$ by the definition of gcd. 
+	By the definition of divisibility, $\exists k\in\mathbb{Z}$ such that $dk = x$.
+	Multiplying this by $3$, we get $(3d)k=3x$. Since $k \in \mathbb{Z}$, $3d \vert 3k$. 
+	Also, $\exists h\in\mathbb{Z}$ such that $dh = y$ and a similar argument shows that $3d|3y$.\\\\
+	By BL, $\exists x_1,y_1\in\mathbb{Z}$ such that $$xx_1 + yy_1 = d.$$ Multiplying the equation by $3$ yields $$(3x)x_1 + (3y)y_1 = 3d.$$
+	Using our previous results, i.e. $3d|3x$ and $3d|3y$ together with the fact that $\exists x_1,y_1\in\mathbb{Z}$ such that $(3x)x_1 + (3y)y_1 = 3d$, we can apply GCD CT to deduce that $\text{gcd}(18x + 3y,3x)=3d$, as required.\\
+\end{proof}
+
+\clearpage
 
 % Question 4
 \begin{question}
 	Prove that if $gcd(a, b) = 1$, then $gcd(2a + b, a + 2b) \in \{1, 3\}$.
 \end{question}
 
-\bigskip
+\begin{proof}
+	Assume that $gcd(a, b) = 1$.
+	Let $d=gcd(2a + b, a + 2b)$. By the definition of gcd, $d|(2a+b)$ and $d|(a+2b)$.
+	By DIC, $$d|[2(2a+b) + (-1)(a+2b)] \implies d | 3a.$$
+	Again, by DIC, $$d|[(-1)(2a+b) + 2(a+2b)] \implies d | 3b.$$
+	By GCD OO, $\exists x,y\in\mathbb{Z}$ such that $ax+by=1$. Multiplying this equation by 3, we get $(3a)x + (3b)y = 3$. By the definition of divisibility, $\exists k\in\mathbb{Z}$ such that $dk = 3a$ and $\exists h\in\mathbb{Z}$ such that $dh = 3b$. Substituting $3a = dk$ and $3b = dh$ into the previous equation, we get $(dk)x + (dh)y = 3 \iff d(kx+hy) = 3$. Since $k,x,h,y \in \mathbb{Z}$, $kx+hy \in \mathbb{Z}$. So by definition of divisibility, $d|3$. The only possible values of $d$ are $1$ and $3$, i.e. $d = gcd(2a + b, a + 2b) \in \{1, 3\}$, as required.\\
+\end{proof}
 
 % Question 5
 \begin{question}
 	Prove that for every integer $k$, $gcd(a, b) \leq gcd(ak, b)$.
 \end{question}
 
-\bigskip
+\begin{proof}
+	Let $k\in\mathbb{Z}$, $d_1=gcd(a, b)$ and $d_2=gcd(ak, b)$. By definition of gcd, $d_1|a$ and $d_1|b$. Clearly, $a|ak$. By TD, since $d_1|a$ and $a|ak$, $d_1|ak$. Applying the definition of gcd on $d_2$, we know that $\forall c\in\mathbb{Z}$, if $c|ak$ and $c|b$, then $c \leq gcd(ak, b) = d_2$. Since $d_1|ak$ and $d_1|b$, we can let $c = d_1$ to deduce that $d_1 \leq d_2$. Thus, $gcd(a, b) \leq gcd(ak, b)$, as required.\\
+\end{proof}
 
 % Question 6
 \begin{question}
